@@ -5,7 +5,10 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+#---- Partie Modifié le 30/01/2014
+QT += widgets
+QT += network
+#---- Fin modif
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Bomberman
@@ -17,4 +20,5 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    Statistics.ui
