@@ -14,6 +14,7 @@
 #include <QTextStream>
 #include <QInputDialog>
 #include <QDialog>
+#include <QAbstractSocket>
 
 namespace Ui {
 class MainWindow;
@@ -43,6 +44,8 @@ private slots:
     void nouvelleConnexion();
     void deconnexionClient();
     void Statistics();
+
+    //????void gererErreur(QAbstractSocket::SocketError erreur); // pour le signal error()
 
 private:
     Ui::MainWindow *ui;

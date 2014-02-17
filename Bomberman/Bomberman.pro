@@ -16,10 +16,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    windowstatistics.cpp
+    windowstatistics.cpp \
+    launchsologame.cpp
 
 HEADERS  += mainwindow.h \
-    windowstatistics.h
+    windowstatistics.h \
+    launchsologame.h
 
 FORMS    += mainwindow.ui \
-    windowstatistics.ui
+    windowstatistics.ui \
+    launchsologame.ui

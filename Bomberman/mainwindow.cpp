@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include "windowstatistics.h"
+#include "launchsologame.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,12 +39,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::BeginPartySolo()
+/*void MainWindow::BeginPartySolo()
 {
     QMessageBox msg;
     msg.setText("Vous venez de lancer une partie solo.");
     msg.exec();
+}*/
+void MainWindow::BeginPartySolo()
+{
+    LaunchSoloGame* formsologame = new LaunchSoloGame(this);
+    formsologame->show();
 }
+
 
 void MainWindow::BeginPartyMulti()
 {
