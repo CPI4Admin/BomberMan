@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-//---- Partie Modifié le 30/01/2014
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLabel>
@@ -14,11 +13,10 @@
 #include <QString>
 #include <QTextStream>
 #include <QInputDialog>
-//---- Fin modif
+#include <Qdialog>
 
 namespace Ui {
 class MainWindow;
-class Statistics;
 }
 
 class MainWindow : public QMainWindow
@@ -47,11 +45,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    //---- Partie Modifié le 30/01/2014
     QLabel *etatServeur;
     QTcpServer *serveur; // Represente le serveur sur le reseau
     QList<QTcpSocket *> clients; // Gere un tableau contenant la liste des clients
-    //---- Fin modif
 };
 
-#endif // MAINWINDOW_H
+#endif

@@ -1,7 +1,9 @@
 #include "mainwindow.h"
+#include "paramwindows.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QDialog>
+#include "windowstatistics.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -100,30 +102,39 @@ void MainWindow::Quit()
 
 void MainWindow::GameControls()
 {
-    QMessageBox msg;
-    msg.setText("Vous venez d'ouvrir les configurations des commandes de jeu.");
-    msg.exec();
+    ParamWindows* paramForm;
+    paramForm = new ParamWindows(this, 2);
+    paramForm->show();
 }
 
 void MainWindow::DisplaySetting()
 {
-    QMessageBox msg;
-    msg.setText("Vous venez d'ouvrir les configurations d'affichage.");
-    msg.exec();
+    ParamWindows* paramForm;
+    paramForm = new ParamWindows(this, 1);
+    paramForm->show();
 }
 
 void MainWindow::AudioSetting()
 {
-    QMessageBox msg;
-    msg.setText("Vous venez d'ouvrir les configurations audio.");
-    msg.exec();
+    ParamWindows* paramForm;
+    paramForm = new ParamWindows(this, 0);
+    paramForm->show();
 }
 
 void MainWindow::Help()
 {
-    QMessageBox msg;
-    msg.setText("Vous venez d'ouvrir les configurations audio.");
-    msg.exec();
+    QString texte;
+    QFile fichier("C:/Users/thibaud/Documents/GitHub/BomberMan/Bomberman/Help.txt");
+    if(fichier.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        texte = fichier.readAll();
+        QMessageBox msgHelp;
+        msgHelp.setGeometry(10,100,400,200);
+        msgHelp.information(this, "Fichier d'aide : ", texte);
+
+        fichier.close();
+    }
+    else texte = "Impossible d'ouvrir le fichier !";
 }
 
 void MainWindow::Credits()
@@ -134,25 +145,9 @@ void MainWindow::Credits()
 }
 void MainWindow::Statistics()
 {
-    QString texte;
-    QFile fichier("C:/Users/thibaud/Documents/cpi4/Bomberman/BombermanServerYann/BomberManStatistics.txt");
-    if(fichier.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-
-        texte = fichier.readAll();
-        // zoneTexte.setText(texte);
-        // zoneTexte.show();
-        QMessageBox msgStatistics;
-        msgStatistics.setGeometry(10,100,400,200);
-        msgStatistics.information(this, "Statistiques du joueur", texte);
-
-        //QMessageBox information;
-        // information.setGeometry(10,100,400,200);
-        // information.information(this, "Statistiques du joueur", texte);
-        fichier.close();
-
-    }
-    else texte = "Impossible d'ouvrir le fichier !";
+    windowstatistics* Stats;
+    Stats = new windowstatistics(this);
+    Stats->exec();
 }
 
 //---- Partie Modifié le 30/01/2014
