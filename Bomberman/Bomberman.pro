@@ -21,16 +21,16 @@ SOURCES += main.cpp\
     paramwindows.cpp \
     windowserveur.cpp \
     launchsologame.cpp \
-    widgetchat.cpp \
-    networkserver.cpp
+    networkserver.cpp \
+    widgetchat.cpp
 
 HEADERS += mainwindow.h \
         windowstatistics.h \
     paramwindows.h \
     windowserveur.h \
     launchsologame.h \
-    widgetchat.h \
-    networkserver.h
+    networkserver.h \
+    widgetchat.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \

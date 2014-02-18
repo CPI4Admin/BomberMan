@@ -6,7 +6,7 @@ widgetChat::widgetChat(QWidget *parent,QList<QString> *listJoueur) :
     ui(new Ui::widgetChat)
 {
     ui->setupUi(this);
-    connect(ui->pushButtonQuitter,SIGNAL(clicked()),this,SLOT(close()));
+    connect(ui->btQuitterChat,SIGNAL(clicked()),this,SLOT(close()));
     //TODO; Parcourir la liste des joueur et remplir la liste view avec celle ci
 
     //TODO; connect le bouton a envoyer

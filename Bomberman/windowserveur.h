@@ -28,7 +28,7 @@ public:
 private:
     Ui::windowserveur *ui;
     NetworkServer *serveur;
-    QLabel *etatServeur;
+    //QLabel *etatServeur;
 
 private slots:
     void DemarrerServeur();

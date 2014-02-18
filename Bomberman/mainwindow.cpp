@@ -62,7 +62,7 @@ void MainWindow::BeginPartyMulti()
     QList<QString> *listJoueur = new QList<QString>();
     listJoueur->insert(0,"toto");
     widgetChat *Chat = new widgetChat(this,listJoueur);
-    Chat->setGeometry(10,40,500,500);
+    Chat->setGeometry(10,40,590,500);
     Chat->show();
 }
 
