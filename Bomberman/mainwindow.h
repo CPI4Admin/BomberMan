@@ -14,6 +14,7 @@
 #include <QTextStream>
 #include <QInputDialog>
 #include <QDialog>
+#include <QFileDialog>
 
 namespace Ui {
 class MainWindow;
