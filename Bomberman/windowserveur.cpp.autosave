@@ -24,12 +24,11 @@ void windowserveur::DemarrerServeur()
         serveur = new NetworkServer(this);
 
         etatServeur = new QLabel;
-        // changer text label
+        
         ui->labelStatutServeur->setText("Le serveur est démarré.");
 
        if(serveur->start())
        {
-           // changer text label
            ui->labelStatutServeur->setText("Le serveur a été demarré sur le port :<strong>" + QString::number(serveur->serverPort()));
 
        }else{
@@ -41,7 +40,6 @@ void windowserveur::DemarrerServeur()
 
 void windowserveur::ArreterServeur()
 {
-    // changer text label
     ui->labelStatutServeur->setText("Le serveur est arreté.");
     serveur->deleteLater();
 }

@@ -6,6 +6,7 @@
 #include "windowstatistics.h"
 #include "windowserveur.h"
 #include "launchsologame.h"
+#include "widgetchat.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -32,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAide,SIGNAL(triggered()),this,SLOT(Help()));
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +57,13 @@ void MainWindow::BeginPartyMulti()
     windowserveur* formServeur;
     formServeur = new windowserveur(this);
     formServeur->exec();
+
+    //Ajout du widgetChat
+    QList<QString> *listJoueur = new QList<QString>();
+    listJoueur->insert(0,"toto");
+    widgetChat *Chat = new widgetChat(this,listJoueur);
+    Chat->setGeometry(10,40,500,500);
+    Chat->show();
 }
 
 void MainWindow::LoadPartySolo()
