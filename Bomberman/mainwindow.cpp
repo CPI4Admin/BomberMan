@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionDemarrerPartieMulti,SIGNAL(triggered()),this,SLOT(BeginPartyMulti()));
     connect(ui->actionChargerPartieSolo,SIGNAL(triggered()),this,SLOT(LoadPartySolo()));
     connect(ui->actionChargerPartieMulti,SIGNAL(triggered()),this,SLOT(LoadPartyMulti()));
-    connect(ui->actionSauvegarderPartieSolo,SIGNAL(triggered()),this,SLOT(BeginPartySolo()));
+    connect(ui->actionSauvegarderPartieSolo,SIGNAL(triggered()),this,SLOT(SavePartySolo()));
     connect(ui->actionQuitter,SIGNAL(triggered()),this,SLOT(Quit()));
     connect(ui->actionCommandes_de_jeu,SIGNAL(triggered()),this,SLOT(GameControls()));
     connect(ui->actionAffichage,SIGNAL(triggered()),this,SLOT(DisplaySetting()));
@@ -29,7 +29,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAide,SIGNAL(triggered()),this,SLOT(Help()));
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
-
 }
 
 
@@ -72,9 +71,28 @@ void MainWindow::BeginPartyMulti()
 
 void MainWindow::LoadPartySolo()
 {
-    QMessageBox msg;
-    msg.setText("Vous venez de charger une partie solo.");
-    msg.exec();
+    // Ouverture du dossier parent de la solution et filtre sur les fichiers de type texte pour sélection fichier à ouvrir
+    QString fichier = QFileDialog::getOpenFileName(this, "Ouvrir un fichier", QString(), "Fichiers texte (*.txt)");
+
+    // Message d'information provisoire indiquant le chemin d'accès au fichier à ouvrir
+    QMessageBox::information(this, "Fichier", "Vous avez ouvert le fichier :\n" + fichier);
+
+    // on déclare la variable de type fichier, puis on l'ouvre en mode "lecture seule"
+    QFile fichierACharger(fichier);
+    fichierACharger.open(QIODevice::ReadOnly | QIODevice::Text);
+    QTextStream flux (&fichierACharger);
+
+    QString ligne;
+
+    // On parcours ensuite le fichier ligne par ligne en y appliquant un traitement : ici affichage d'une messageBox
+    while(! flux.atEnd())
+    {
+        ligne = flux.readLine();
+
+        QMessageBox msg;
+        msg.setText(ligne);
+        msg.exec();
+    }
 }
 
 void MainWindow::LoadPartyMulti()
@@ -86,9 +104,15 @@ void MainWindow::LoadPartyMulti()
 
 void MainWindow::SavePartySolo()
 {
-    QMessageBox msg;
-    msg.setText("Vous venez de sauvegarder une partie solo.");
-    msg.exec();
+    // On ou vre une boite de dialogue permettant la sauvegarde d'un fichier
+    QString fichier = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString("*.txt"), "Fichiers texte (*.txt);; Tous les fichiers (*.*)");
+
+    // Message d'information provisoire indiquant le chemin d'accès du fichier créé
+    QMessageBox::information(this, "Fichier", "Vous avez sauvegardé le fichier :\n" + fichier);
+
+    //QMessageBox msg;
+    //msg.setText("Vous venez de sauvegarder une partie solo.");
+    //msg.exec();
 }
 
 void MainWindow::Quit()
