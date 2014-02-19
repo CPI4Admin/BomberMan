@@ -23,7 +23,7 @@ private:
     Ui::widgetChat *ui;
 
 private slots:
-    void EnvoyerMessage();
+    void SendMessages();
 };
 
 #endif // WIDGETCHAT_H

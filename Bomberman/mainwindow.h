@@ -41,8 +41,6 @@ private slots:
     void AudioSetting();
     void Help();
     void Credits();
-    void nouvelleConnexion();
-    void deconnexionClient();
     void Statistics();
 
 private:

@@ -6,9 +6,11 @@
 class NetworkServer : public QTcpServer
 {
     Q_OBJECT
+
 public:
     explicit NetworkServer(QObject *parent = 0);
-    bool start();
+
+    bool StartServeur();
 
 signals:
 

@@ -11,8 +11,8 @@ windowserveur::windowserveur(QWidget *parent) :
 
     ui->setupUi(this);
 
-    connect(ui->btStartServer,SIGNAL(clicked()),this, SLOT(DemarrerServeur()));
-    connect(ui->btStopServer,SIGNAL(clicked()),this, SLOT(ArreterServeur()));
+    connect(ui->btStartServer,SIGNAL(clicked()),this, SLOT(StartServer()));
+    connect(ui->btStopServer,SIGNAL(clicked()),this, SLOT(StopServer()));
     connect(ui->btQuitterServer,SIGNAL(clicked()),this,SLOT(close()));
 }
 
@@ -21,18 +21,15 @@ windowserveur::~windowserveur()
     delete ui;
 }
 
-void windowserveur::DemarrerServeur()
+void windowserveur::StartServer()
 {
         serveur = new NetworkServer(this);
 
-        //etatServeur = new QLabel;
-        
         ui->label_1->setText("Le serveur est maintenant démarré." );
-
 
        // Test Erreur 01
        // Si le serveur n'est pas déja démarré
-       if(serveur->start())
+       if(serveur->StartServeur())
        {
            ui->label_1->setText("Le serveur a été demarré sur le port :<strong>" + QString::number(serveur->serverPort()));
 
@@ -42,13 +39,11 @@ void windowserveur::DemarrerServeur()
            ui->label_2->setText(serveur->errorString());
        }
 }
-void windowserveur::ArreterServeur()
+void windowserveur::StopServer()
 {
         // changer text label
         ui->label_1->setText("Le serveur est arreté.");
         serveur->deleteLater();
-
-
 }
 
 

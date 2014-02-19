@@ -28,11 +28,10 @@ public:
 private:
     Ui::windowserveur *ui;
     NetworkServer *serveur;
-    //QLabel *etatServeur;
 
 private slots:
-    void DemarrerServeur();
-    void ArreterServeur();
+    void StartServer();
+    void StopServer();
 
 };
 

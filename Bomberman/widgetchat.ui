@@ -33,7 +33,7 @@
      <widget class="QLineEdit" name="saisiMessage"/>
     </item>
     <item>
-     <widget class="QPushButton" name="btSend">
+     <widget class="QPushButton" name="btSendMessages">
       <property name="text">
        <string>Envoyer</string>
       </property>

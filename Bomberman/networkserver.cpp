@@ -4,7 +4,8 @@ NetworkServer::NetworkServer(QObject *parent) :
     QTcpServer(parent)
 {
 }
-bool NetworkServer::start()
+
+bool NetworkServer::StartServeur()
 {
     if (!listen(QHostAddress::Any, 60000)) // Demarrage du serveur sur toutes les IP disponibles et sur le port 60000
     {
