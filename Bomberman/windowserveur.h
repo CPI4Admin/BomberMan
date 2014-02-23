@@ -19,26 +19,21 @@ namespace Ui {
 class windowserveur;
 }
 
-class windowserveur : public QDialog
+class windowserveur : public QTcpServer
 {
     Q_OBJECT
 
 public:
     explicit windowserveur(QWidget *parent = 0);
     ~windowserveur();
-
-private:
-    Ui::windowserveur *ui;
-    QLabel *etatServeur;
-    QTcpServer *serveur; // Represente le serveur sur le reseau
-    QList<QTcpSocket *> clients; // Gere un tableau contenant la liste des clients
-
-
-private slots:
     void DemarrerServeur();
     void ArreterServeur();
     void nouvelleConnexion();
     void deconnexionClient();
+
+
+private:
+    QList<QTcpSocket *> clients; // Gere un tableau contenant la liste des clients
 };
 
 #endif // WINDOWSERVEUR_H

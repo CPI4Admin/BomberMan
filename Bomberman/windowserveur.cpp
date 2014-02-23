@@ -1,39 +1,35 @@
 #include "windowserveur.h"
-#include "ui_windowserveur.h"
 #include <QMessageBox>
 
 windowserveur::windowserveur(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::windowserveur)
+    QTcpServer(parent)
 {
-    ui->setupUi(this);
-    connect(ui->pushButtonLancerServeur,SIGNAL(clicked()),this, SLOT(DemarrerServeur()));
-    connect(ui->pushButtonArreterServeur,SIGNAL(clicked()),this, SLOT(ArreterServeur()));
-    connect(ui->pushButtonFermer,SIGNAL(clicked()),this,SLOT(close()));
+    //ui->setupUi(this);
 }
 
 windowserveur::~windowserveur()
 {
-    delete ui;
+    //delete ui;
 }
 
 void windowserveur::DemarrerServeur()
 {
-        etatServeur = new QLabel;
+        //etatServeur = new QLabel;
         // changer text label
-        ui->labelStatutServeur->setText("Le serveur est démarré.");
+        //ui->labelStatutServeur->setText("Le serveur est démarré.");
 
-        serveur = new QTcpServer(this);
-        if (!serveur->listen(QHostAddress::Any, 60000)) // Demarrage du serveur sur toutes les IP disponibles et sur le port 60000
+        if (!listen(QHostAddress::Any, 60000)) // Demarrage du serveur sur toutes les IP disponibles et sur le port 60000
         {
             // Si le serveur n'a pas ete demarre correctement
-
-            ui->labelStatutServeurErreur->setText(tr("Le serveur est déja demarré. Raison :<br />") + serveur->errorString());
+            //todo: Retourner une erreur
+           // ui->labelStatutServeurErreur->setText(tr("Le serveur est déja demarré. Raison :<br />") + serveur->errorString());
 
         }else
         {
+            // TODO: Retourner un signal bien déroulé
+
             // changer text label
-            ui->labelStatutServeur->setText("Le serveur à été demarré sur le port 60 000 <strong>") ;//+ QString::number(serveur->serverPort());
+            //ui->labelStatutServeur->setText("Le serveur à été demarré sur le port 60 000 <strong>") ;//+ QString::number(serveur->serverPort());
 
         }
 }
@@ -42,13 +38,15 @@ void windowserveur::DemarrerServeur()
 void windowserveur::ArreterServeur()
 {
     // changer text label
-    ui->labelStatutServeur->setText("Le serveur est arreté.");
-    serveur->close();
+    //ui->labelStatutServeur->setText("Le serveur est arreté.");
+    close();
+
+    // RETOURNER UNE ALERTE !
 }
 void windowserveur::nouvelleConnexion()
 {
     //** Gestion des connections clients et de port dans un tableau
-    QTcpSocket *nouveauClient = serveur->nextPendingConnection();
+    QTcpSocket *nouveauClient = nextPendingConnection();
     clients << nouveauClient;
 
 }

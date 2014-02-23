@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include <QDialog>
 #include "windowstatistics.h"
-#include "windowserveur.h"
+#include "launchmultigame.h"
 #include "launchsologame.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -51,9 +51,9 @@ void MainWindow::BeginPartySolo()
 
 void MainWindow::BeginPartyMulti()
 {
-    windowserveur* formServeur;
-    formServeur = new windowserveur(this);
-    formServeur->exec();
+    LaunchMultiGame* formMulti;
+    formMulti = new LaunchMultiGame(this);
+    formMulti->exec();
 }
 
 void MainWindow::LoadPartySolo()
