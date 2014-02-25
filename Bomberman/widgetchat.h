@@ -14,10 +14,11 @@ class widgetChat : public QWidget
 public:
     explicit widgetChat(QWidget *parent = 0, QList<QString> *listJoueur = new QList<QString>());
     ~widgetChat();
-    void EcrireMessage(QString msg, QString JoueurQuiLaEnvoyer);
+
+    void WriteMessages(QString msg, QString JoueurQuiLaEnvoye);
 
 public slots:
-    void RecevoirMessage(QString msg, QString JoueurQuiLaEnvoyer);
+    void GetMessages(QString msg, QString JoueurQuiLaEnvoye);
 
 private:
     Ui::widgetChat *ui;
