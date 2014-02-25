@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "paramwindows.h"
 #include "ui_mainwindow.h"
+
 #include <QMessageBox>
 #include <QDialog>
 #include "windowstatistics.h"
@@ -54,9 +55,11 @@ void MainWindow::BeginPartySolo()
 
 void MainWindow::BeginPartyMulti()
 {
-    windowserveur* formServeur;
-    formServeur = new windowserveur(this);
-    formServeur->exec();
+
+    windowserveur* windowServer;
+    windowServer = new windowserveur(this);
+    windowServer->exec();
+
 
     //Test du module chat
     //Ajout du widgetChat
