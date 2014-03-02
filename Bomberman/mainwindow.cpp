@@ -6,6 +6,7 @@
 #include <QDialog>
 #include "windowstatistics.h"
 #include "windowserveur.h"
+#include "launchmultigame.h"
 #include "launchsologame.h"
 #include "widgetchat.h"
 
@@ -55,7 +56,9 @@ void MainWindow::BeginPartySolo()
 
 void MainWindow::BeginPartyMulti()
 {
-
+    LaunchMultiGame *launcherMulti = new LaunchMultiGame();
+    launcherMulti->exec();
+    /*
     windowserveur* windowServer;
     windowServer = new windowserveur(this);
     windowServer->exec();
@@ -70,7 +73,7 @@ void MainWindow::BeginPartyMulti()
     Chat->setGeometry(10,40,590,500);
     Chat->show();
 
-
+    */
 }
 
 void MainWindow::LoadPartySolo()

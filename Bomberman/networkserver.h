@@ -8,6 +8,7 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <QLabel>
+#include "networkclient.h"
 
 class NetworkServer : public QTcpServer
 {
@@ -20,11 +21,9 @@ public:
     bool StopServer();
     bool QuitServer();
 
+    QList<NetworkClient *> clients; // Gere un tableau contenant la liste des clients.
+
 private:
-
-    QList<QTcpSocket *> clients; // Gere un tableau contenant la liste des clients.
-    QTcpServer *server;
-
 
 signals:
 

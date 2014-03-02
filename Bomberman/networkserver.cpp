@@ -27,7 +27,9 @@ bool NetworkServer::QuitServer()
 
 void NetworkServer::NewConnection()
 {
-    QTcpSocket *socket = server->nextPendingConnection(); // Gestion des connections clients et de port dans un tableau.
+    // TODO: ajouter un client à la liste des clients;
+
+    QTcpSocket *socket = this->nextPendingConnection(); // Gestion des connections clients et de port dans un tableau.
     socket->disconnect();
 
 
@@ -39,7 +41,12 @@ void NetworkServer::DisConnection()
     if (socket == 0) // Si par hasard on n'a pas trouve le client a l'origine du signal, on arrete la methode
         return;
 
-    clients.removeOne(socket);
-
+    foreach(NetworkClient *client,clients)
+    {
+        if (client->socket == socket)
+        {
+            clients.removeOne(client);
+        }
+    }
     socket->deleteLater();
 }
