@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "paramwindows.h"
 #include "ui_mainwindow.h"
+
 #include <QMessageBox>
 #include <QDialog>
 #include "windowstatistics.h"
-#include "launchmultigame.h"
+#include "windowserveur.h"
 #include "launchsologame.h"
+#include "widgetchat.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -32,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAide,SIGNAL(triggered()),this,SLOT(Help()));
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -51,9 +55,22 @@ void MainWindow::BeginPartySolo()
 
 void MainWindow::BeginPartyMulti()
 {
-    LaunchMultiGame* formMulti;
-    formMulti = new LaunchMultiGame(this);
-    formMulti->exec();
+
+    windowserveur* windowServer;
+    windowServer = new windowserveur(this);
+    windowServer->exec();
+
+
+    //Test du module chat
+    //Ajout du widgetChat
+
+    QList<QString> *listJoueur = new QList<QString>();
+    listJoueur->insert(0,"toto");
+    widgetChat *Chat = new widgetChat(this,listJoueur);
+    Chat->setGeometry(10,40,590,500);
+    Chat->show();
+
+
 }
 
 void MainWindow::LoadPartySolo()
@@ -141,7 +158,17 @@ void MainWindow::Help()
 
         fichier.close();
     }
-    else texte = "Impossible d'ouvrir le fichier !";
+    else
+    {
+        // Tu veux du commentaire ! je vais t'en mettre ...
+        // Modifié par Yann le 26 février 2014 car cela ne fonctionnait pas !!!!
+        // Banzai !!!!!!!!!
+        QMessageBox msg; //déclaration d'une variable msg de type QMessageBox
+        msg.setText("Impossible d'ouvrir le fichier !"); // Modification de la variable avec du texte !
+        msg.exec(); // Affichage de la QMessageBox pour le mec qui a besoin d'aide ;-)
+        // Fin du commentaire par Yann
+    }
+
 }
 
 void MainWindow::Credits()
@@ -153,34 +180,15 @@ void MainWindow::Credits()
     QMessageBox::about(this, tr("BomberMAN"),
                  tr("The <b>BomberMAN</b>  is a strategic, maze-based video game franchise originally developed by Hudson Soft. The original game was published in 1983 and new games have been published at irregular intervals ever since.                Several titles in the 2000s were published by fellow Japanese game company Konami, who gained full control of the franchise when they purchased and absorbed Hudson in 2012. Today, Bomberman has featured in over 70 different games on numerous platforms (including all Nintendo platforms save for the 3DS and Wii U), as well as several anime and manga.His franchise is one of the most commercially successful of all time.    <br><b>Realised by the Dream-Team : </b></br> <br>Petra Kratochvilova</br> <br>Thibaud Cutullic</br><br>Yoann Solacroup</br><br>Yann Damon</br><br>Gregoire Quincy</br><br>Roman Logvinov</br><br>Damien Moro</br>"));
 }
+
 void MainWindow::Statistics()
 {
     windowstatistics* Stats;
     Stats = new windowstatistics(this);
+    Stats->setGeometry(50,100,490,190);
     Stats->exec();
 }
 
-//---- Partie Modifié le 30/01/2014
-// Je ne sais si dois intégrer les fonction ci dessous au menu, donc la base des fonction est la.
-// On verra avec Damien ...
 
-void MainWindow::nouvelleConnexion()
-{
-    // Gestion des connections clients et de port dans un tableau
-    QTcpSocket *nouveauClient = serveur->nextPendingConnection();
-    clients << nouveauClient;
 
-}
 
-void MainWindow::deconnexionClient()
-{
-     // On determine quel client se deconnecte
-    QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
-    if (socket == 0) // Si par hasard on n'a pas trouve le client a l'origine du signal, on arrete la methode
-        return;
-
-    clients.removeOne(socket);
-
-    socket->deleteLater();
-}
-//---- Fin modif

@@ -1,66 +1,64 @@
 #include "windowserveur.h"
-#include <QMessageBox>
+#include "ui_windowserveur.h"
 
 windowserveur::windowserveur(QWidget *parent) :
-    QTcpServer(parent)
+    QDialog(parent),
+    ui(new Ui::windowserveur)
 {
-    //ui->setupUi(this);
+
+    server = new NetworkServer(this);
+
+    ui->setupUi(this);
+
+    connect(ui->btStartServer,SIGNAL(clicked()),this, SLOT(StartServer()));
+    connect(ui->btStopServer,SIGNAL(clicked()),this, SLOT(StopServer()));
+    connect(ui->btQuitterServer,SIGNAL(clicked()),this,SLOT(QuitServer()));
 }
 
 windowserveur::~windowserveur()
 {
-    //delete ui;
+    delete ui;
 }
 
-void windowserveur::DemarrerServeur()
+void windowserveur::StartServer()
 {
-        //etatServeur = new QLabel;
-        // changer text label
-        //ui->labelStatutServeur->setText("Le serveur est démarré.");
+    // Test si le serveur ne démarre pas.
+    if(!server->StartServer())
+      {
+        // Le serveur est déja démarré sur le port 60000 ou il ne peut pas démarrer.
+        // Renvoi donc un message d'erreur.
+        ui->label_1->setText("Le serveur est déja demarré !!<strong>");
+        ui->label_2->setText("Le serveur est déja en écoute sur le port :" + QString::number(server->serverError()));
 
-        if (!listen(QHostAddress::Any, 60000)) // Demarrage du serveur sur toutes les IP disponibles et sur le port 60000
-        {
-            // Si le serveur n'a pas ete demarre correctement
-            //todo: Retourner une erreur
-           // ui->labelStatutServeurErreur->setText(tr("Le serveur est déja demarré. Raison :<br />") + serveur->errorString());
+      }else{
+            // Le serveur a bien démarré, affichage du port d'écoute pour les clients.
+           ui->label_1->setText("Le serveur a été demarré sur le port :<strong>" + QString::number(server->serverPort()));
+           ui->label_2->setText("");
+            }
 
-        }else
-        {
-            // TODO: Retourner un signal bien déroulé
-
-            // changer text label
-            //ui->labelStatutServeur->setText("Le serveur à été demarré sur le port 60 000 <strong>") ;//+ QString::number(serveur->serverPort());
-
-        }
 }
-
-
-void windowserveur::ArreterServeur()
+void windowserveur::StopServer()
 {
-    // changer text label
-    //ui->labelStatutServeur->setText("Le serveur est arreté.");
-    close();
 
-    // RETOURNER UNE ALERTE !
+    // Test si le serveur s'arrête correctement.
+    if(!server->StopServer())
+      {
+        // Le serveur à un problème pour s'arrêter.
+        // Renvoi donc un message d'erreur.
+        ui->label_1->setText("Le serveur a un problème pour s'arrêter !!! <strong>");
+        ui->label_2->setText(QString::number(server->serverError()));
+
+      }else{
+           // Le serveur va être arrêté.
+           ui->label_1->setText("Le serveur est éteind");
+           ui->label_2->setText("");
+            }
+
 }
-void windowserveur::nouvelleConnexion()
+
+void windowserveur::QuitServer()
 {
-    //** Gestion des connections clients et de port dans un tableau
-    QTcpSocket *nouveauClient = nextPendingConnection();
-    clients << nouveauClient;
-
+    // Si je ferme la fenêtre du serveur sans fermer le serveur, il une erreur lors du rappel
+    // de la fenêtre du serveur. Je n'arrive à récupérer la gestion du serveur en réouvrant la fenêtre
+   close();
 }
-
-void windowserveur::deconnexionClient()
-{
-     //** On determine quel client se deconnecte
-    QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
-    if (socket == 0) // Si par hasard on n'a pas trouve le client a l'origine du signal, on arrete la methode
-        return;
-
-    clients.removeOne(socket);
-
-    socket->deleteLater();
-}
-
-
