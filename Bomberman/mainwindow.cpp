@@ -70,12 +70,8 @@ void MainWindow::BeginPartyMulti()
     widgetChat *Chat = new widgetChat(this,listJoueur);
     Chat->setGeometry(10,40,590,500);
     Chat->show();
-<<<<<<< HEAD
 
-
-=======
     ui->statusBar->showMessage("Vous avez lancé la partie multijoueur.", 15000);
->>>>>>> master
 }
 
 void MainWindow::LoadPartySolo()
@@ -156,11 +152,8 @@ void MainWindow::AudioSetting()
 void MainWindow::Help()
 {
     QString texte;
-<<<<<<< HEAD
     QFile fichier("../Bomberman/Help.txt"); // Modification du chemin d'accès en chemin relatif
-=======
-    QFile fichier("C:/Users/Petulka/Bomberman/Bomberman/Help.txt");
->>>>>>> master
+    
     if(fichier.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         texte = fichier.readAll();
