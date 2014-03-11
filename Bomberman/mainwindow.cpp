@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "paramwindows.h"
 #include "ui_mainwindow.h"
+
 #include <QMessageBox>
 #include <QDialog>
 #include "windowstatistics.h"
@@ -54,9 +55,11 @@ void MainWindow::BeginPartySolo()
 
 void MainWindow::BeginPartyMulti()
 {
-    windowserveur* formServeur;
-    formServeur = new windowserveur(this);
-    formServeur->exec();
+
+    windowserveur* windowServer;
+    windowServer = new windowserveur(this);
+    windowServer->exec();
+
 
     //Test du module chat
     //Ajout du widgetChat
@@ -145,7 +148,7 @@ void MainWindow::AudioSetting()
 void MainWindow::Help()
 {
     QString texte;
-    QFile fichier("C:/Users/thibaud/Documents/GitHub/BomberMan/Bomberman/Help.txt");
+    QFile fichier("../Bomberman/Help.txt"); // Modification du chemin d'accès en chemin relatif
     if(fichier.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         texte = fichier.readAll();
@@ -155,7 +158,17 @@ void MainWindow::Help()
 
         fichier.close();
     }
-    else texte = "Impossible d'ouvrir le fichier !";
+    else
+    {
+        // Tu veux du commentaire ! je vais t'en mettre ...
+        // Modifié par Yann le 26 février 2014 car cela ne fonctionnait pas !!!!
+        // Banzai !!!!!!!!!
+        QMessageBox msg; //déclaration d'une variable msg de type QMessageBox
+        msg.setText("Impossible d'ouvrir le fichier !"); // Modification de la variable avec du texte !
+        msg.exec(); // Affichage de la QMessageBox pour le mec qui a besoin d'aide ;-)
+        // Fin du commentaire par Yann
+    }
+
 }
 
 void MainWindow::Credits()
