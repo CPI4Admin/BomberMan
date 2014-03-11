@@ -148,7 +148,7 @@ void MainWindow::AudioSetting()
 void MainWindow::Help()
 {
     QString texte;
-    QFile fichier("C:/Users/thibaud/Documents/GitHub/BomberMan/Bomberman/Help.txt");
+    QFile fichier("../Bomberman/Help.txt"); // Modification du chemin d'accès en chemin relatif
     if(fichier.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         texte = fichier.readAll();
