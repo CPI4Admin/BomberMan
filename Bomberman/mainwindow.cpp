@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
 
-
 }
 
 MainWindow::~MainWindow()
@@ -195,7 +194,4 @@ void MainWindow::Statistics()
     Stats->exec();
     ui->statusBar->showMessage("Vous avez consulté les statistics.", 15000);
 }
-
-
-
 
