@@ -41,15 +41,11 @@ private slots:
     void AudioSetting();
     void Help();
     void Credits();
-    void nouvelleConnexion();
-    void deconnexionClient();
     void Statistics();
 
 private:
     Ui::MainWindow *ui;
-    QLabel *etatServeur;
-    QTcpServer *serveur; // Represente le serveur sur le reseau
-    QList<QTcpSocket *> clients; // Gere un tableau contenant la liste des clients
-};
 
-#endif
+                                                                             //QTcpServer *server;
+};
+#endif //MAINWINDOW_H

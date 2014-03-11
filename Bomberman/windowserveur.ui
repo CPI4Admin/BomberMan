@@ -2,81 +2,84 @@
 <ui version="4.0">
  <class>windowserveur</class>
  <widget class="QDialog" name="windowserveur">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>343</width>
-    <height>256</height>
+    <width>411</width>
+    <height>115</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButtonLancerServeur">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>180</y>
-     <width>121</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Démarrer le serveur</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelStatutServeur">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>30</y>
-     <width>121</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Le serveur est arrêté</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButtonArreterServeur">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>180</y>
-     <width>111</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Arreter le serveur</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelStatutServeurErreur">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>100</y>
-     <width>321</width>
-     <height>61</height>
+     <y>0</y>
+     <width>391</width>
+     <height>71</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_1">
+    <item>
+     <widget class="QLabel" name="label_1">
+      <property name="text">
+       <string>Le serveur est arrêté</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Aucune érreurs serveur</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QPushButton" name="pushButtonFermer">
+  <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>230</y>
-     <width>75</width>
-     <height>23</height>
+     <x>50</x>
+     <y>70</y>
+     <width>301</width>
+     <height>41</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Fermer</string>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_1">
+    <item>
+     <widget class="QPushButton" name="btStartServer">
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btStopServer">
+      <property name="text">
+       <string>Stop</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btQuitterServer">
+      <property name="text">
+       <string>Quitter</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

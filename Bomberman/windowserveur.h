@@ -1,6 +1,8 @@
 #ifndef WINDOWSERVEUR_H
 #define WINDOWSERVEUR_H
 
+#include "networkserver.h"
+
 #include <QMainWindow>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
@@ -12,7 +14,7 @@
 #include <QTextStream>
 #include <QInputDialog>
 #include <QDialog>
-#include "networkserver.h"
+
 
 namespace Ui {
 class windowserveur;
@@ -25,14 +27,15 @@ class windowserveur : public QDialog
 public:
     explicit windowserveur(QWidget *parent = 0);
     ~windowserveur();
+
 private:
     Ui::windowserveur *ui;
-    NetworkServer *serveur;
-    QLabel *etatServeur;
+    NetworkServer *server;
 
 private slots:
-    void DemarrerServeur();
-    void ArreterServeur();
+    void StartServer();
+    void StopServer();
+    void QuitServer();
 
 };
 

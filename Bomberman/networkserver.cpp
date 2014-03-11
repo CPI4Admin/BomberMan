@@ -1,34 +1,41 @@
 #include "networkserver.h"
-#include <QTcpSocket>
+
+
 NetworkServer::NetworkServer(QObject *parent) :
     QTcpServer(parent)
 {
 }
-bool NetworkServer::start()
+
+bool NetworkServer::StartServer()
 {
-    if (!listen(QHostAddress::Any, 60000)) // Demarrage du serveur sur toutes les IP disponibles et sur le port 60000
-    {
-        return false;
-
-    }else
-    {
-
-        return true;
-    }
+    return listen(QHostAddress::Any, 60000); // Demarrage du serveur sur toutes les IP disponibles et sur le port 60000
 }
 
-void NetworkServer::nouvelleConnexion()
+bool NetworkServer::StopServer()
 {
-    //** Gestion des connections clients et de port dans un tableau
-    QTcpSocket *nouveauClient = this->nextPendingConnection();
-    clients << nouveauClient;
+    close(); // Arrêt du serveur.
+    return true;
 
 }
 
-void NetworkServer::deconnexionClient()
+bool NetworkServer::QuitServer()
 {
-     //** On determine quel client se deconnecte
-     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
+    close(); // Arrêt du serveur avant fermeture de la fenêtre du serveur.
+    return true;
+
+}
+
+void NetworkServer::NewConnection()
+{
+    QTcpSocket *socket = server->nextPendingConnection(); // Gestion des connections clients et de port dans un tableau.
+    socket->disconnect();
+
+
+}
+
+void NetworkServer::DisConnection()
+{
+    QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender()); //On determine quel client se deconnecte.
     if (socket == 0) // Si par hasard on n'a pas trouve le client a l'origine du signal, on arrete la methode
         return;
 
