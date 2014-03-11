@@ -13,7 +13,311 @@
   <property name="windowTitle">
    <string>BomberMan </string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>141</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QGroupBox" name="groupBoxStat">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="title">
+        <string>Statistics</string>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>130</y>
+          <width>141</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QGroupBox" name="groupBoxInfosGame">
+           <property name="title">
+            <string/>
+           </property>
+           <widget class="QLabel" name="labelLife">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>31</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Life</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButtonLifeOne">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>10</y>
+              <width>21</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButtonLifeFour">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>84</x>
+              <y>10</y>
+              <width>21</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButtonLifeThree">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>66</x>
+              <y>10</y>
+              <width>21</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButtonLifeTwo">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>48</x>
+              <y>10</y>
+              <width>21</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButtonLifeFive">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>102</x>
+              <y>10</y>
+              <width>21</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButtonScore">
+            <property name="geometry">
+             <rect>
+              <x>90</x>
+              <y>30</y>
+              <width>21</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../../../Pictures/score.png</normaloff>../../../../Pictures/score.png</iconset>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="lineEditScore">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>51</x>
+              <y>31</y>
+              <width>41</width>
+              <height>20</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="labelScore">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>35</y>
+              <width>46</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Score</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="labelBonus">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>60</y>
+              <width>46</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Bonus </string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>141</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QGroupBox" name="groupBoxInfosPlayer">
+           <property name="title">
+            <string/>
+           </property>
+           <widget class="QWidget" name="">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>71</width>
+              <height>79</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="labelTimer">
+               <property name="text">
+                <string>Time</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelLevel">
+               <property name="text">
+                <string>Level</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelUserName">
+               <property name="text">
+                <string>Player name</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="">
+            <property name="geometry">
+             <rect>
+              <x>71</x>
+              <y>0</y>
+              <width>71</width>
+              <height>80</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QTimeEdit" name="TimeEditTimer">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="frame">
+                <bool>true</bool>
+               </property>
+               <property name="timeSpec">
+                <enum>Qt::LocalTime</enum>
+               </property>
+               <property name="time">
+                <time>
+                 <hour>0</hour>
+                 <minute>0</minute>
+                 <second>0</second>
+                </time>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditLTimer"/>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditPlayerName"/>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>

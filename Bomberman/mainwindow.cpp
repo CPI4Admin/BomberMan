@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
 
-
 }
 
 MainWindow::~MainWindow()
@@ -188,7 +187,4 @@ void MainWindow::Statistics()
     Stats->setGeometry(50,100,490,190);
     Stats->exec();
 }
-
-
-
 
