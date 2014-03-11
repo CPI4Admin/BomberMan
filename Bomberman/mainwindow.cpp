@@ -51,6 +51,8 @@ void MainWindow::BeginPartySolo()
 
     LaunchSoloGame* formsologame = new LaunchSoloGame(this);
     formsologame->show();
+
+    ui->statusBar->showMessage("Lancez une nouvelle partie solo.", 15000);
 }
 
 void MainWindow::BeginPartyMulti()
@@ -69,6 +71,8 @@ void MainWindow::BeginPartyMulti()
     widgetChat *Chat = new widgetChat(this,listJoueur);
     Chat->setGeometry(10,40,590,500);
     Chat->show();
+
+    ui->statusBar->showMessage("Vous avez lancé la partie multijoueur.", 15000);
 
 
 }
@@ -104,6 +108,8 @@ void MainWindow::LoadPartyMulti()
     QMessageBox msg;
     msg.setText("Vous venez de charger une partie multi.");
     msg.exec();
+
+    ui->statusBar->showMessage("Vous avez chargé une partie multijoueur.", 15000);
 }
 
 void MainWindow::SavePartySolo()
@@ -113,6 +119,8 @@ void MainWindow::SavePartySolo()
 
     // Message d'information provisoire indiquant le chemin d'accès du fichier créé
     QMessageBox::information(this, "Fichier", "Vous avez sauvegardé le fichier :\n" + fichier);
+
+    ui->statusBar->showMessage("Vous avez sauvegardé la partie solo.", 15000);
 }
 
 void MainWindow::Quit()
@@ -157,6 +165,8 @@ void MainWindow::Help()
         msgHelp.information(this, "Fichier d'aide : ", texte);
 
         fichier.close();
+
+        ui->statusBar->showMessage("Vous venez de fermer le fichier d'Aide.", 15000);
     }
     else
     {
@@ -187,6 +197,8 @@ void MainWindow::Statistics()
     Stats = new windowstatistics(this);
     Stats->setGeometry(50,100,490,190);
     Stats->exec();
+
+    ui->statusBar->showMessage("Vous avez consulté les statistics.", 15000);
 }
 
 
