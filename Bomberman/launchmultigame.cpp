@@ -41,7 +41,7 @@ void LaunchMultiGame::LancerPartie()
         ui->txt_Port->setVisible(false);
         resize(1200,800);
 
-        widgetChat *Chat = new widgetChat(this, server);
+        widgetChat *Chat = new widgetChat/*(this, server)*/;
         Chat->setGeometry(10,40,590,500);
         Chat->show();
 
