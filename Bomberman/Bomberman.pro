@@ -4,16 +4,10 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-#---- Partie Modifié le 30/01/2014
-QT += widgets
-QT += network
-#---- Fin modif
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui widgets network
 
 TARGET = Bomberman
 TEMPLATE = app
-
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -24,7 +18,17 @@ SOURCES += main.cpp\
     networkserver.cpp \
     widgetchat.cpp \
     networkclient.cpp \
-    launchmultigame.cpp
+    launchmultigame.cpp \
+    eltdecor.cpp \
+    eltbomb.cpp \
+    eltfixedbrick.cpp \
+    elttempbrick.cpp \
+    eltplayer.cpp \
+    eltbrick.cpp \
+    eltbackground.cpp \
+    eltfactory.cpp \
+    eltmobil.cpp \
+    eltbase.cpp
 
 HEADERS += mainwindow.h \
         windowstatistics.h \
@@ -34,7 +38,17 @@ HEADERS += mainwindow.h \
     networkserver.h \
     widgetchat.h \
     networkclient.h \
-    launchmultigame.h
+    launchmultigame.h \
+    eltgraphicfactory.h \
+    elttempbrick.h \
+    eltplayer.h \
+    eltfixedbrick.h \
+    eltbrick.h \
+    eltbomb.h \
+    eltdecor.h \
+    eltbackground.h \
+    eltmobil.h \
+    eltbase.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \
