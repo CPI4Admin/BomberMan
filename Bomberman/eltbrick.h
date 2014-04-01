@@ -1,7 +1,7 @@
 #ifndef BRICK_H
 #define BRICK_H
 
-#include <eltdecor.h>
+#include "eltdecor.h"
 
 class EltBrick : public EltDecor
 {

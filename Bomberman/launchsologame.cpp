@@ -3,6 +3,10 @@
 #include <QMessageBox>
 #include <QComboBox>
 #include <QDialog>
+#include <QFile>
+#include <QTextStream>
+
+#include "eltfactory.h"
 
 LaunchSoloGame::LaunchSoloGame(QWidget *parent) :
     QDialog(parent),
@@ -49,6 +53,7 @@ void LaunchSoloGame::FillMap()
     ui->ch_map->addItem("Map3");
     ui->ch_map->addItem("Map4");
 }
+
 void LaunchSoloGame::ChangeMap()
 {
     //TODO: Choisir la Map à charger
@@ -79,12 +84,12 @@ void LaunchSoloGame::ChangeMap()
 
             int col = 0;
 
-            foreach (char c, ligne)
+            foreach (QChar c, ligne)
             {
-                EltGraphicFabric::Get()->createElement('B', lig, col);
+                EltFactory::Get()->CreateElement('B', lig, col);
 
                 if (c != ' ')
-                    EltGraphicFabric::Get()->createElement(c, lig, col);
+                    EltFactory::Get()->CreateElement(c.toLatin1(), lig, col);
 
                 col++;
             }
@@ -97,17 +102,16 @@ void LaunchSoloGame::ChangeMap()
 //choisir la Difficulté
 void LaunchSoloGame::SetDiff()
 {
-  /*ui->diffNormal,Clicked(true);
-   ui->diffNovice;
-   ui->diffNormal;
-   ui->diffVeteran;*/
-
-
+    //ui->diffNormal,Clicked(true);
+    //ui->diffNovice;
+    //ui->diffNormal;
+    //ui->diffVeteran;
 }
 
 
-
-/*void LaunchSoloGame::on_scrollLevel_destroyed()
+/*
+void LaunchSoloGame::on_scrollLevel_destroyed()
 {
 
-}*/
+}
+*/

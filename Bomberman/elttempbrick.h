@@ -1,7 +1,7 @@
 #ifndef TEMPBRICKELT_H
 #define TEMPBRICKELT_H
 
-#include <eltbrick.h>
+#include "eltbrick.h"
 #include <iostream>
 
 class EltTempBrick : public EltBrick

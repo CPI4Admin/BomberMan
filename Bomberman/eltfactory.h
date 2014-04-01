@@ -1,7 +1,7 @@
-#ifndef ELTGRAPHICFACTORY_H
-#define ELTGRAPHICFACTORY_H
+#ifndef ELTFACTORY_H
+#define ELTFACTORY_H
 
-#include <eltbase.h>
+#include "eltbase.h"
 #include <map>
 
 // Factory for creating instances of IAnimal
@@ -26,7 +26,7 @@ public:
     }
 
     void Register(char elt, CreateElementFn pfnCreate);
-    EltBase *CreateElement(char elt);
+    EltBase *CreateElement(char elt, int ligne, int colonne);
 };
 
-#endif // ELTGRAPHICFACTORY_H
+#endif // ELTFACTORY_H
