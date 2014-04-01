@@ -29,6 +29,7 @@ void NetworkServer::NewConnection()
 {
     QTcpSocket *socket = server->nextPendingConnection(); // Gestion des connections clients et de port dans un tableau.
     socket->disconnect();
+	clients << socket; // CrÃ©ation de la liste des clients connectÃ©s au serveur.
 
 
 }

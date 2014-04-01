@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
 
-
 }
 
 MainWindow::~MainWindow()
@@ -51,6 +50,7 @@ void MainWindow::BeginPartySolo()
 
     LaunchSoloGame* formsologame = new LaunchSoloGame(this);
     formsologame->show();
+    ui->statusBar->showMessage("Lancez une nouvelle partie solo.", 15000);
 }
 
 void MainWindow::BeginPartyMulti()
@@ -70,7 +70,7 @@ void MainWindow::BeginPartyMulti()
     Chat->setGeometry(10,40,590,500);
     Chat->show();
 
-
+    ui->statusBar->showMessage("Vous avez lancé la partie multijoueur.", 15000);
 }
 
 void MainWindow::LoadPartySolo()
@@ -79,23 +79,26 @@ void MainWindow::LoadPartySolo()
     QString fichier = QFileDialog::getOpenFileName(this, "Ouvrir un fichier", QString(), "Fichiers texte (*.txt)");
 
     // Message d'information provisoire indiquant le chemin d'accès au fichier à ouvrir
-    QMessageBox::information(this, "Fichier", "Vous avez ouvert le fichier :\n" + fichier);
+    // QMessageBox::information(this, "Fichier", "Vous avez ouvert le fichier :\n" + fichier);
 
     // on déclare la variable de type fichier, puis on l'ouvre en mode "lecture seule"
     QFile fichierACharger(fichier);
-    fichierACharger.open(QIODevice::ReadOnly | QIODevice::Text);
-    QTextStream flux (&fichierACharger);
 
-    QString ligne;
-
-    // On parcours ensuite le fichier ligne par ligne en y appliquant un traitement : ici affichage d'une messageBox
-    while(! flux.atEnd())
+    if (fichierACharger.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        ligne = flux.readLine();
+        QTextStream flux (&fichierACharger);
 
-        QMessageBox msg;
-        msg.setText(ligne);
-        msg.exec();
+        QString ligne;
+
+        // On parcours ensuite le fichier ligne par ligne en y appliquant un traitement : ici affichage d'une messageBox
+        while(! flux.atEnd())
+        {
+            ligne = flux.readLine();
+
+            QMessageBox msg;
+            msg.setText(ligne);
+            msg.exec();
+        }
     }
 }
 
@@ -104,15 +107,26 @@ void MainWindow::LoadPartyMulti()
     QMessageBox msg;
     msg.setText("Vous venez de charger une partie multi.");
     msg.exec();
+    ui->statusBar->showMessage("Vous avez chargé une partie multijoueur.", 15000);
 }
 
 void MainWindow::SavePartySolo()
 {
     // On ouvre une boite de dialogue permettant la sauvegarde d'un fichier
-    QString fichier = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString("*.txt"), "Fichiers texte (*.txt);; Tous les fichiers (*.*)");
+    QString path = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString("*.txt"), "Fichiers texte (*.txt);; Tous les fichiers (*.*)");
 
-    // Message d'information provisoire indiquant le chemin d'accès du fichier créé
-    QMessageBox::information(this, "Fichier", "Vous avez sauvegardé le fichier :\n" + fichier);
+    // On crée le fichier ou écrase un existant
+    QFile file(path);
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QTextStream out(&file);
+        out << "J'ai sauvegardé le fichier " + path;
+
+        file.close();
+
+        ui->statusBar->showMessage("Partie sauvegardée : " + path, 15000);
+    }
 }
 
 void MainWindow::Quit()
@@ -148,7 +162,8 @@ void MainWindow::AudioSetting()
 void MainWindow::Help()
 {
     QString texte;
-    QFile fichier("C:/Users/thibaud/Documents/GitHub/BomberMan/Bomberman/Help.txt");
+    QFile fichier("../Bomberman/Help.txt"); // Modification du chemin d'accès en chemin relatif
+    
     if(fichier.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         texte = fichier.readAll();
@@ -157,6 +172,7 @@ void MainWindow::Help()
         msgHelp.information(this, "Fichier d'aide : ", texte);
 
         fichier.close();
+        ui->statusBar->showMessage("Vous venez de fermer le fichier d'Aide.", 15000);
     }
     else
     {
@@ -187,8 +203,6 @@ void MainWindow::Statistics()
     Stats = new windowstatistics(this);
     Stats->setGeometry(50,100,490,190);
     Stats->exec();
+    ui->statusBar->showMessage("Vous avez consulté les statistics.", 15000);
 }
-
-
-
 
