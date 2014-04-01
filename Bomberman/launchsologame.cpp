@@ -2,6 +2,7 @@
 #include "ui_launchsologame.h"
 #include <QMessageBox>
 #include <QComboBox>
+#include <QDialog>
 
 LaunchSoloGame::LaunchSoloGame(QWidget *parent) :
     QDialog(parent),
@@ -51,6 +52,7 @@ void LaunchSoloGame::FillMap()
 void LaunchSoloGame::ChangeMap()
 {
     //TODO: Choisir la Map à charger
+
     // La map choisie corrrespond à un fichier text...
     // de type boardXXX.txt
     // Remplit avec:
@@ -61,18 +63,35 @@ void LaunchSoloGame::ChangeMap()
     // I    D    I    D    I
     // IIIIIIIIIIIIIIIIIIIII
 
-    // -> lire le fichier
-    // ligne = 0;
-    // col = 0;
-    // Pour chaque caractère lu: {
-    //      EltGraphicFabric::Get()->createElt( "B", ligne, col );
-    //      if ( ! ' ' )
-    //          EltGraphicFabric::Get()->createElt( caractère-lu, ligne, col );
-    //      col++;
-    //      if( '\n')
-    //       {   ligne++; col = 0; }
-    // }
+    QFile fichier("../Bomberman/maps/board001.txt");
 
+    if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream flux (&fichier);
+
+        QString ligne;
+
+        int lig = 0;
+
+        while(! flux.atEnd())
+        {
+            ligne = flux.readLine();
+
+            int col = 0;
+
+            foreach (char c, ligne)
+            {
+                EltGraphicFabric::Get()->createElement('B', lig, col);
+
+                if (c != ' ')
+                    EltGraphicFabric::Get()->createElement(c, lig, col);
+
+                col++;
+            }
+
+            lig++;
+        }
+    }
 }
 
 //choisir la Difficulté
