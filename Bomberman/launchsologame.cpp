@@ -2,6 +2,11 @@
 #include "ui_launchsologame.h"
 #include <QMessageBox>
 #include <QComboBox>
+#include <QDialog>
+#include <QFile>
+#include <QTextStream>
+
+#include "eltfactory.h"
 
 LaunchSoloGame::LaunchSoloGame(QWidget *parent) :
     QDialog(parent),
@@ -48,9 +53,11 @@ void LaunchSoloGame::FillMap()
     ui->ch_map->addItem("Map3");
     ui->ch_map->addItem("Map4");
 }
+
 void LaunchSoloGame::ChangeMap()
 {
     //TODO: Choisir la Map à charger
+
     // La map choisie corrrespond à un fichier text...
     // de type boardXXX.txt
     // Remplit avec:
@@ -61,34 +68,50 @@ void LaunchSoloGame::ChangeMap()
     // I    D    I    D    I
     // IIIIIIIIIIIIIIIIIIIII
 
-    // -> lire le fichier
-    // ligne = 0;
-    // col = 0;
-    // Pour chaque caractère lu: {
-    //      EltGraphicFabric::Get()->createElt( "B", ligne, col );
-    //      if ( ! ' ' )
-    //          EltGraphicFabric::Get()->createElt( caractère-lu, ligne, col );
-    //      col++;
-    //      if( '\n')
-    //       {   ligne++; col = 0; }
-    // }
+    QFile fichier("../Bomberman/maps/board001.txt");
 
+    if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream flux (&fichier);
+
+        QString ligne;
+
+        int lig = 0;
+
+        while(! flux.atEnd())
+        {
+            ligne = flux.readLine();
+
+            int col = 0;
+
+            foreach (QChar c, ligne)
+            {
+                EltFactory::Get()->CreateElement('B', lig, col);
+
+                if (c != ' ')
+                    EltFactory::Get()->CreateElement(c.toLatin1(), lig, col);
+
+                col++;
+            }
+
+            lig++;
+        }
+    }
 }
 
 //choisir la Difficulté
 void LaunchSoloGame::SetDiff()
 {
-  /*ui->diffNormal,Clicked(true);
-   ui->diffNovice;
-   ui->diffNormal;
-   ui->diffVeteran;*/
-
-
+    //ui->diffNormal,Clicked(true);
+    //ui->diffNovice;
+    //ui->diffNormal;
+    //ui->diffVeteran;
 }
 
 
-
-/*void LaunchSoloGame::on_scrollLevel_destroyed()
+/*
+void LaunchSoloGame::on_scrollLevel_destroyed()
 {
 
-}*/
+}
+*/

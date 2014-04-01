@@ -1,7 +1,7 @@
 #ifndef BLOCKDECOR_H
 #define BLOCKDECOR_H
 
-#include <eltbase.h>
+#include "eltbase.h"
 
 class EltDecor : public EltBase
 {

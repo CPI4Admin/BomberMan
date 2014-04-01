@@ -39,7 +39,6 @@ HEADERS += mainwindow.h \
     widgetchat.h \
     networkclient.h \
     launchmultigame.h \
-    eltgraphicfactory.h \
     elttempbrick.h \
     eltplayer.h \
     eltfixedbrick.h \
@@ -48,7 +47,8 @@ HEADERS += mainwindow.h \
     eltdecor.h \
     eltbackground.h \
     eltmobil.h \
-    eltbase.h
+    eltbase.h \
+    eltfactory.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \

@@ -1,7 +1,7 @@
 #ifndef BOMBELT_H
 #define BOMBELT_H
 
-#include <eltmobil.h>
+#include "eltmobil.h"
 #include <iostream>
 
 class EltBomb : public EltMobil

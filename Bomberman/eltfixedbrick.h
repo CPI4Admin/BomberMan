@@ -1,7 +1,7 @@
 #ifndef FIXEDBRICKELT_H
 #define FIXEDBRICKELT_H
 
-#include <eltbrick.h>
+#include "eltbrick.h"
 #include <iostream>
 
 class EltFixedBrick: public EltBrick
