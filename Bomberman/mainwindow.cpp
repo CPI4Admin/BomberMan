@@ -79,23 +79,26 @@ void MainWindow::LoadPartySolo()
     QString fichier = QFileDialog::getOpenFileName(this, "Ouvrir un fichier", QString(), "Fichiers texte (*.txt)");
 
     // Message d'information provisoire indiquant le chemin d'accès au fichier à ouvrir
-    QMessageBox::information(this, "Fichier", "Vous avez ouvert le fichier :\n" + fichier);
+    // QMessageBox::information(this, "Fichier", "Vous avez ouvert le fichier :\n" + fichier);
 
     // on déclare la variable de type fichier, puis on l'ouvre en mode "lecture seule"
     QFile fichierACharger(fichier);
-    fichierACharger.open(QIODevice::ReadOnly | QIODevice::Text);
-    QTextStream flux (&fichierACharger);
 
-    QString ligne;
-
-    // On parcours ensuite le fichier ligne par ligne en y appliquant un traitement : ici affichage d'une messageBox
-    while(! flux.atEnd())
+    if (fichierACharger.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        ligne = flux.readLine();
+        QTextStream flux (&fichierACharger);
 
-        QMessageBox msg;
-        msg.setText(ligne);
-        msg.exec();
+        QString ligne;
+
+        // On parcours ensuite le fichier ligne par ligne en y appliquant un traitement : ici affichage d'une messageBox
+        while(! flux.atEnd())
+        {
+            ligne = flux.readLine();
+
+            QMessageBox msg;
+            msg.setText(ligne);
+            msg.exec();
+        }
     }
 }
 
@@ -110,12 +113,20 @@ void MainWindow::LoadPartyMulti()
 void MainWindow::SavePartySolo()
 {
     // On ouvre une boite de dialogue permettant la sauvegarde d'un fichier
-    QString fichier = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString("*.txt"), "Fichiers texte (*.txt);; Tous les fichiers (*.*)");
+    QString path = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString("*.txt"), "Fichiers texte (*.txt);; Tous les fichiers (*.*)");
 
-    // Message d'information provisoire indiquant le chemin d'accès du fichier créé
-    QMessageBox::information(this, "Fichier", "Vous avez sauvegardé le fichier :\n" + fichier);
+    // On crée le fichier ou écrase un existant
+    QFile file(path);
 
-     ui->statusBar->showMessage("Vous avez sauvegardé la partie solo.", 15000);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QTextStream out(&file);
+        out << "J'ai sauvegardé le fichier " + path;
+
+        file.close();
+
+        ui->statusBar->showMessage("Partie sauvegardée : " + path, 15000);
+    }
 }
 
 void MainWindow::Quit()
