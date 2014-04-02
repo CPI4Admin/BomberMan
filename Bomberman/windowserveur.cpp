@@ -34,6 +34,7 @@ void windowserveur::StartServer()
             // Le serveur a bien démarré, affichage du port d'écoute pour les clients.
            ui->label_1->setText("Le serveur a été demarré sur le port :<strong>" + QString::number(server->serverPort()));
            ui->label_2->setText("");
+
             }
 
 }
