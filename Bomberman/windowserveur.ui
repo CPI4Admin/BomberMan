@@ -46,6 +46,16 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>Information sur la partie créée par le serveur !!</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
@@ -148,7 +158,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QSpinBox" name="spinBox_nbPlayer">
+       <widget class="QSpinBox" name="nbPlayer">
         <property name="maximum">
          <number>12</number>
         </property>
@@ -261,7 +271,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QSpinBox" name="spinBoxLevel">
+       <widget class="QSpinBox" name="Level">
         <property name="minimum">
          <number>1</number>
         </property>
@@ -317,7 +327,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QSpinBox" name="spinBoxDifficulty">
+       <widget class="QSpinBox" name="Difficulty">
         <property name="minimum">
          <number>1</number>
         </property>
