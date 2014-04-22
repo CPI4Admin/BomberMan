@@ -34,6 +34,7 @@ void windowserveur::StartServer()
             // Le serveur a bien démarré, affichage du port d'écoute pour les clients.
            ui->label_1->setText("Le serveur a été demarré sur le port :<strong>" + QString::number(server->serverPort()));
            ui->label_2->setText("");
+
             }
 
 }
@@ -60,5 +61,18 @@ void windowserveur::QuitServer()
 {
     // Si je ferme la fenêtre du serveur sans fermer le serveur, il une erreur lors du rappel
     // de la fenêtre du serveur. Je n'arrive à récupérer la gestion du serveur en réouvrant la fenêtre
-   close();
+    // Test si le serveur s'arrête correctement.
+    if(!server->StopServer())
+      {
+        // Le serveur à un problème pour s'arrêter.
+        // Renvoi donc un message d'erreur.
+        ui->label_1->setText("Le serveur a un problème pour s'arrêter !!! <strong>");
+        ui->label_2->setText(QString::number(server->serverError()));
+
+      }else{
+           // Le serveur va être arrêté.
+           ui->label_1->setText("Le serveur est éteind");
+           ui->label_2->setText("");
+           close();
+            }
 }

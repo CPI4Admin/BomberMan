@@ -9,6 +9,7 @@
 #include "launchsologame.h"
 #include "widgetchat.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -60,7 +61,6 @@ void MainWindow::BeginPartyMulti()
     windowServer = new windowserveur(this);
     windowServer->exec();
 
-
     //Test du module chat
     //Ajout du widgetChat
 
@@ -69,6 +69,7 @@ void MainWindow::BeginPartyMulti()
     widgetChat *Chat = new widgetChat(this,listJoueur);
     Chat->setGeometry(10,40,590,500);
     Chat->show();
+
 
     ui->statusBar->showMessage("Vous avez lancé la partie multijoueur.", 15000);
 }
