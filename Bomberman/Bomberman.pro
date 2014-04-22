@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     eltbackground.cpp \
     eltfactory.cpp \
     eltmobil.cpp \
-    eltbase.cpp
+    eltbase.cpp \
+    message.cpp
 
 
 HEADERS += mainwindow.h \
@@ -49,7 +50,8 @@ HEADERS += mainwindow.h \
     eltbackground.h \
     eltmobil.h \
     eltbase.h \
-    eltfactory.h
+    eltfactory.h \
+    message.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \

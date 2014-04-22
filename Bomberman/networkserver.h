@@ -3,6 +3,7 @@
 
 #include "mainwindow.h"
 #include "networkclient.h"
+#include "message.h"
 #include <QTcpServer>
 #include <QObject>
 #include <QTcpSocket>
