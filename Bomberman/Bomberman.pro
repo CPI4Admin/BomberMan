@@ -30,6 +30,7 @@ SOURCES += main.cpp\
     eltmobil.cpp \
     eltbase.cpp
 
+
 HEADERS += mainwindow.h \
         windowstatistics.h \
     paramwindows.h \

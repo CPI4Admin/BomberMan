@@ -3,11 +3,25 @@
 
 #include <QTcpSocket>
 
-class NetworkClient
+class NetworkClient : public QObject
 {
 public:
     NetworkClient();
-    QTcpSocket* socket;
+
+public slots :
+    void receiveIP(QString IP2);
+    void receiveMessage(Message msg)
+
+private slots :
+    void connectionOK();
+    void readMessage();
+signals:
+    void MessageReceived(Message msg);
+    void connectionOkSignal();
+private:
+    QString IP;
+    int port;
+    QTcpSocket socket;
 };
 
 #endif // NETWORKCLIENT_H

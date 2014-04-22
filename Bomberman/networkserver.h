@@ -2,7 +2,7 @@
 #define NETWORKSERVER_H
 
 #include "mainwindow.h"
-
+#include "networkclient.h"
 #include <QTcpServer>
 #include <QObject>
 #include <QTcpSocket>
@@ -16,26 +16,17 @@ class NetworkServer : public QTcpServer
 public:
     explicit NetworkServer(QObject *parent = 0);
 
-    bool StartServer();
-    bool StopServer();
-    bool QuitServer();
-
 private:
-
-    QList<QTcpSocket *> clients; // Gere un tableau contenant la liste des clients.
-    QTcpServer *server;
-
+    QList<NetworkClient *> clients; // Gere un tableau contenant la liste des clients.
 
 signals:
-
-public slots:
+    void sendMessage(Message msg);
+    void newConnectionSignal(NetworkClient);
 
 private slots:
-
-    void NewConnection();
-    void DisConnection();
-
-
+    void newConnection();
+    void disConnection();
+    void reading();
 
 };
 
