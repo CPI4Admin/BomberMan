@@ -2,6 +2,7 @@
 #define NETWORKCLIENT_H
 
 #include <QTcpSocket>
+#include "message.h"
 
 class NetworkClient : public QObject
 {
@@ -10,7 +11,7 @@ public:
 
 public slots :
     void receiveIP(QString IP2);
-    void receiveMessage(Message msg)
+    void receiveMessage(Message* msg);
 
 private slots :
     void connectionOK();
