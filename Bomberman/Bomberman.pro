@@ -10,14 +10,12 @@ TARGET = Bomberman
 TEMPLATE = app
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-        windowstatistics.cpp \
+	mainwindow.cpp \
+	windowstatistics.cpp \
     paramwindows.cpp \
     windowserveur.cpp \
     launchsologame.cpp \
-    networkserver.cpp \
     widgetchat.cpp \
-    networkclient.cpp \
     launchmultigame.cpp \
     eltdecor.cpp \
     eltbomb.cpp \
@@ -29,17 +27,23 @@ SOURCES += main.cpp\
     eltfactory.cpp \
     eltmobil.cpp \
     eltbase.cpp \
-    message.cpp
+	bmerror.cpp \
+	bmerrormanager.cpp \
+	bmmessage.cpp \
+	bmnetwork.cpp \
+	bmnetworktcp.cpp \
+	bmnetworktcpclient.cpp \
+	bmnetworktcpserver.cpp \
+	bytebuffer.cpp \
+	byteorder.cpp
 
 
 HEADERS += mainwindow.h \
-        windowstatistics.h \
+	windowstatistics.h \
     paramwindows.h \
     windowserveur.h \
     launchsologame.h \
-    networkserver.h \
     widgetchat.h \
-    networkclient.h \
     launchmultigame.h \
     elttempbrick.h \
     eltplayer.h \
@@ -51,7 +55,15 @@ HEADERS += mainwindow.h \
     eltmobil.h \
     eltbase.h \
     eltfactory.h \
-    message.h
+	bmerror.h \
+	bmerrormanager.h \
+	bmmessage.h \
+	bmnetwork.h \
+	bmnetworktcp.h \
+	bmnetworktcpclient.h \
+	bmnetworktcpserver.h \
+	bytebuffer.h \
+	byteorder.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \

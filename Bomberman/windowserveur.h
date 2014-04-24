@@ -1,8 +1,6 @@
 #ifndef WINDOWSERVEUR_H
 #define WINDOWSERVEUR_H
 
-#include "networkserver.h"
-
 #include <QMainWindow>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
@@ -15,6 +13,7 @@
 #include <QInputDialog>
 #include <QDialog>
 
+class BmNetworkTCPServer;
 
 namespace Ui {
 class windowserveur;
@@ -30,7 +29,7 @@ public:
 
 private:
     Ui::windowserveur *ui;
-    NetworkServer *server;
+    BmNetworkTCPServer* server;
 
 private slots:
     void StartServer();
