@@ -8,6 +8,7 @@
 #include "windowserveur.h"
 #include "launchsologame.h"
 #include "widgetchat.h"
+#include "joinparty.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -61,6 +62,7 @@ void MainWindow::BeginPartyMulti()
     windowServer = new windowserveur(this);
     windowServer->exec();
 
+
     //Test du module chat
     //Ajout du widgetChat
 
@@ -105,10 +107,15 @@ void MainWindow::LoadPartySolo()
 
 void MainWindow::LoadPartyMulti()
 {
-    QMessageBox msg;
+    /*QMessageBox msg;
     msg.setText("Vous venez de charger une partie multi.");
     msg.exec();
-    ui->statusBar->showMessage("Vous avez chargé une partie multijoueur.", 15000);
+    ui->statusBar->showMessage("Vous avez chargé une partie multijoueur.", 15000);*/
+
+    JoinParty* JoinPartyMulti;
+    JoinPartyMulti = new JoinParty(this);
+//JoinPartyMulti->setGeometry(50,100,200,190);
+    JoinPartyMulti->show();
 }
 
 void MainWindow::SavePartySolo()
