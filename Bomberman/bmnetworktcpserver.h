@@ -11,7 +11,6 @@ class BmNetworkTCPServer : public BmNetworkTCP
     Q_OBJECT
 
 private:
-    QTcpServer* mSocket;
     bool mConnected; /*!< The connection indicator. */
 
 public:
@@ -21,6 +20,7 @@ public:
     void close();
     virtual bool isConnected() const;
     virtual void start();
+    QTcpServer* mSocket;
 
 signals:
     /**
