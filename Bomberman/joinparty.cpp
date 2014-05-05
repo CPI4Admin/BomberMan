@@ -1,9 +1,19 @@
 #include "joinparty.h"
 #include "ui_joinparty.h"
-#include "bmnetworktcpclient.h"
-#include <QMessageBox>
-#include "bmerrormanager.h"
-#include "BmError.h"
+
+    #include "bmnetworktcpclient.h"
+    #include "bytebuffer.h"
+    #include "bmmessage.h"
+    #include "bmerrormanager.h"
+    #include <QtNetwork>
+    #include <QByteArray>
+    #include <QCoreApplication>
+    #include <QDataStream>
+    #include <QDateTime>
+    #include <QMessageBox>
+    #include <QTcpSocket>
+    #include <QAbstractSocket>
+
 
 JoinParty::JoinParty(QWidget *parent) :
     QDialog(parent),
@@ -22,36 +32,20 @@ JoinParty::~JoinParty()
 
 void JoinParty::ConnectParty()
 {
-    const QHostAddress host =  QHostAddress(ui->lineEditIPServer->text());
-    int Port = ui->spinBoxPortListen->value();
-    BmNetworkTCPClient* monClient = new BmNetworkTCPClient(host,Port,true);
-    if(monClient->isConnected())
-    {
-        QMessageBox msg;
-        msg.setText("Vous êtez connecté à la partie !!");
-        msg.exec();
-    }
-    else
-    {
-        //QString errors;
 
-        //for(std::list<BmError *>::iterator it = BmErrorManager::getInstance()->getErrors().begin(); it != BmErrorManager::getInstance()->getErrors().end(); it++)
-        //{
-            /* TODO : Parcours de la liste d'erreur*/
-        //}
+    // Cela fonctionne, j'arrive à me connecter sur le serveur
+    QTcpSocket* socket;
+    socket = new QTcpSocket(this);
+    socket->abort();
+    socket->connectToHost(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());
+
+    if (socket->state() == QAbstractSocket::UnconnectedState )
+        BmErrorManager::pushMessage( tr("Erreur de connection !!").arg(sock->errorString()),
+                                 BmErrorManager::DEBUG_MESSAGE);
 
 
-        QMessageBox msg;
-        //msg.setText(errors);
-        msg.setText("Vous n'êtez pas connecté !!");
-        msg.exec();
-    }
+    //cela ne fonctionne pas, je ne comprends pas l'erreur lié au nombre de para en sortie de compilation
+    //BmNetworkTCPClient::connectedTo(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());
+    //BmNetworkTCPClient::mSocket->connectToHost(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());
 
-
-    /*
-    close();
-
-    QMessageBox msg;
-    msg.setText("Vous êtez connecté à la partie !!");
-    msg.exec();*/
 }

@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include <QDialog>
 #include "windowstatistics.h"
-#include "windowserveur.h"
+#include "createpartymultigamer.h"
 #include "launchsologame.h"
 #include "widgetchat.h"
 #include "joinparty.h"
@@ -58,9 +58,9 @@ void MainWindow::BeginPartySolo()
 void MainWindow::BeginPartyMulti()
 {
 
-    windowserveur* windowServer;
-    windowServer = new windowserveur(this);
-    windowServer->exec();
+    createpartymultigamer* CreatePartyMultiGamer;
+    CreatePartyMultiGamer = new createpartymultigamer(this);
+    CreatePartyMultiGamer->exec();
 
 
     //Test du module chat

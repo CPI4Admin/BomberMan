@@ -30,9 +30,11 @@ void createpartymultigamer::StartServer()
 
 void createpartymultigamer::StopServer()
 {
-
+    server->close();
 }
 
 void createpartymultigamer::QuitServer()
 {
+    server->close();
+    close();
 }
