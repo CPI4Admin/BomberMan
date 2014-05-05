@@ -99,6 +99,9 @@ void BmNetworkTCPClient::exceptionManagement( QAbstractSocket::SocketError socke
              BmErrorManager::pushMessage( tr("Error in BmNetworkTCPClient: %1.").arg(mSocket->errorString()),
                                           BmErrorManager::DEBUG_MESSAGE );
          }
+
+    // On a emit une nouvelle erreur. Notifie les objets qui sont connecté sur le signal
+    emit connectionError();
 }
 
 void BmNetworkTCPClient::init()

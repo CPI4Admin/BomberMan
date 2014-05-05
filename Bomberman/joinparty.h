@@ -10,6 +10,7 @@
 #include <QDialog>
 #include <QMessageBox>
 
+class BmNetworkTCPClient;
 
 
 namespace Ui {
@@ -26,8 +27,11 @@ public:
 private:
     Ui::JoinParty *ui;
 
+    BmNetworkTCPClient* socket;
+
 private slots:
     void ConnectParty();
+    void showError();
 
 };
 
