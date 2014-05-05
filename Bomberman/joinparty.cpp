@@ -32,20 +32,20 @@ JoinParty::~JoinParty()
 
 void JoinParty::ConnectParty()
 {
-
     // Cela fonctionne, j'arrive à me connecter sur le serveur
     QTcpSocket* socket;
     socket = new QTcpSocket(this);
     socket->abort();
     socket->connectToHost(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());
 
+    // je veux utiliser la gestion des erreurs, mais cela ne fonctionne pas !!
     if (socket->state() == QAbstractSocket::UnconnectedState )
         BmErrorManager::pushMessage( tr("Erreur de connection !!").arg(sock->errorString()),
                                  BmErrorManager::DEBUG_MESSAGE);
 
-
-    //cela ne fonctionne pas, je ne comprends pas l'erreur lié au nombre de para en sortie de compilation
-    //BmNetworkTCPClient::connectedTo(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());
-    //BmNetworkTCPClient::mSocket->connectToHost(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());
+    // Je tente d'utiliser les méthodes des fichiers BmNetworkTcpClient mais sans succès
+    // Je ne comprends pas l'erreur lié au nombre de para en sortie de compilation
+        /*BmNetworkTCPClient::connectedTo(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());
+        BmNetworkTCPClient::mSocket->connectToHost(ui->lineEditIPServer->text(), ui->spinBoxPortListen->value());*/
 
 }
