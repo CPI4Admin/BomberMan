@@ -98,7 +98,9 @@ void BmNetworkTCPClient::exceptionManagement( QAbstractSocket::SocketError socke
              BmErrorManager::pushMessage( tr("An unknown error occurred."), BmErrorManager::CRITICAL_MESSAGE );
              BmErrorManager::pushMessage( tr("Error in BmNetworkTCPClient: %1.").arg(mSocket->errorString()),
                                           BmErrorManager::DEBUG_MESSAGE );
+
          }
+     emit connectionError(); // On emet une nouvelle erreur avec le signal connectionErro()
 }
 
 void BmNetworkTCPClient::init()

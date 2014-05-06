@@ -37,6 +37,7 @@ public:
 signals:
     void connectedTo( const QString& peerName );
     void disconnectedFrom( const QString& peerName );
+    void connectionError();
 
 protected:
     virtual void connectTo();
