@@ -10,7 +10,8 @@
 
 JoinParty::JoinParty(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::JoinParty)
+    ui(new Ui::JoinParty),
+    mSocket(0)
 {
     ui->setupUi(this);
 
@@ -27,11 +28,10 @@ void JoinParty::connectParty()
 {
     /* Création du socket client/serveur
     * récupère l'IP et le port saisie par le client */
-    socket = new BmNetworkTCPClient(QHostAddress(ui->lineEditIPServer->text() ), ui->spinBoxPortListen->value(), false);
-    connect(socket, SIGNAL(connectionError()), this, SLOT(showError()) );
-    socket->start();
+    mSocket = new BmNetworkTCPClient(QHostAddress(ui->lineEditIPServer->text() ), ui->spinBoxPortListen->value(), false);
+    connect(mSocket, SIGNAL(connectionError()), this, SLOT(showError()) );
+    mSocket->start();
 }
-
 void JoinParty::showError()
 {
     /* Méthode appelé au signal connectionError()

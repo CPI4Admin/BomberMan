@@ -1,6 +1,8 @@
 #ifndef JOINPARTY_H
 #define JOINPARTY_H
 
+#include "bmnetworktcpclient.h"
+
 #include <QMainWindow>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
@@ -10,7 +12,7 @@
 #include <QDialog>
 #include <QMessageBox>
 
-    #include "bmnetworktcpclient.h"
+
 
 class BmNetworkTCPClient;
 
@@ -27,7 +29,7 @@ public:
     ~JoinParty();
 private:
     Ui::JoinParty *ui;
-    BmNetworkTCPClient* socket;
+    BmNetworkTCPClient* mSocket;
 
 private slots:
     void connectParty();
