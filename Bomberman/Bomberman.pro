@@ -34,8 +34,8 @@ SOURCES += main.cpp\
 	bmnetworktcpserver.cpp \
 	bytebuffer.cpp \
 	byteorder.cpp \
-	joinparty.cpp \
-    createpartymultigamer.cpp
+            joinparty.cpp \
+            createpartymultigamer.cpp
 
 HEADERS += mainwindow.h \
 	windowstatistics.h \
@@ -61,8 +61,8 @@ HEADERS += mainwindow.h \
 	bmnetworktcpserver.h \
 	bytebuffer.h \
 	byteorder.h\
-	joinparty.h \
-    createpartymultigamer.h
+            joinparty.h \
+            createpartymultigamer.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \
@@ -70,4 +70,4 @@ FORMS    += mainwindow.ui \
     launchsologame.ui \
     widgetchat.ui \
 	joinparty.ui \
-    createpartymultigamer.ui
+        createpartymultigamer.ui

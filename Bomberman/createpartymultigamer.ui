@@ -22,7 +22,7 @@
      <x>10</x>
      <y>280</y>
      <width>391</width>
-     <height>71</height>
+     <height>79</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_1">
@@ -122,7 +122,7 @@
   <widget class="QWidget" name="verticalLayoutWidget_3">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>10</y>
      <width>211</width>
      <height>271</height>
@@ -161,6 +161,9 @@
        <widget class="QSpinBox" name="nbPlayer">
         <property name="maximum">
          <number>12</number>
+        </property>
+        <property name="value">
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -271,7 +274,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QSpinBox" name="Level">
+       <widget class="QSpinBox" name="level">
         <property name="minimum">
          <number>1</number>
         </property>
@@ -303,7 +306,7 @@
       <item>
        <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>Difficulté : </string>
+         <string>Nombre de bonus</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -327,12 +330,15 @@
        </spacer>
       </item>
       <item>
-       <widget class="QSpinBox" name="Difficulty">
+       <widget class="QSpinBox" name="nbBonus">
         <property name="minimum">
-         <number>1</number>
+         <number>0</number>
         </property>
         <property name="maximum">
          <number>10</number>
+        </property>
+        <property name="value">
+         <number>0</number>
         </property>
        </widget>
       </item>
@@ -398,6 +404,79 @@
       </item>
       <item>
        <spacer name="horizontalSpacer_8">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Durée partie :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_10">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timer">
+        <property name="correctionMode">
+         <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+        </property>
+        <property name="maximumTime">
+         <time>
+          <hour>0</hour>
+          <minute>20</minute>
+          <second>0</second>
+         </time>
+        </property>
+        <property name="minimumTime">
+         <time>
+          <hour>0</hour>
+          <minute>5</minute>
+          <second>0</second>
+         </time>
+        </property>
+        <property name="currentSection">
+         <enum>QDateTimeEdit::MinuteSection</enum>
+        </property>
+        <property name="displayFormat">
+         <string>mm</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_11">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>

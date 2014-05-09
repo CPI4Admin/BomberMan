@@ -27,6 +27,7 @@ class JoinParty : public QDialog
 public:
     explicit JoinParty(QWidget *parent = 0);
     ~JoinParty();
+
 private:
     Ui::JoinParty *ui;
     BmNetworkTCPClient* mSocket;
@@ -34,6 +35,7 @@ private:
 private slots:
     void connectParty();
     void showError();
+
 
 };
 

@@ -7,7 +7,6 @@
 #include "bmerrormanager.h"
 #include "bmerror.h"
 
-
 JoinParty::JoinParty(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::JoinParty),
@@ -39,5 +38,7 @@ void JoinParty::showError()
     * récupération de la dernière erreur dans une QString msg */
     BmError* error = BmErrorManager::getInstance()->popError();
     QString msg = error->getMessage();
+    ui->label_3->setText(error->getMessage());
 
- }
+}
+
