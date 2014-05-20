@@ -35,7 +35,7 @@ private:
 private slots:
     void connectParty();
     void showError();
-
+    void connecToBis(const QString&);
 
 };
 

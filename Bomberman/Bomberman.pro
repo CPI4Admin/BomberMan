@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui widgets network
+QT += multimedia
 
 TARGET = Bomberman
 TEMPLATE = app

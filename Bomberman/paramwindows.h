@@ -2,6 +2,7 @@
 #define PARAMWINDOWS_H
 
 #include <QDialog>
+#include <QSound>
 
 namespace Ui {
 class ParamWindows;
@@ -19,8 +20,10 @@ private:
     Ui::ParamWindows *ui;
     void FillCbResolution();
 
+
 private slots:
     void ChangeResolution();
+    void AddMusic();
 };
 
 #endif // PARAMWINDOWS_H

@@ -16,6 +16,7 @@ JoinParty::JoinParty(QWidget *parent) :
 
     connect(ui->btJointParty,SIGNAL(clicked()),this, SLOT(connectParty()) );
     connect(ui->btQuitParty,SIGNAL(clicked()),this,SLOT(close()) );
+    //connect(ui->btJointParty,SIGNAL(clicked()),this,SLOT(startChat()) );
 }
 
 JoinParty::~JoinParty()
@@ -29,7 +30,11 @@ void JoinParty::connectParty()
     * récupère l'IP et le port saisie par le client */
     mSocket = new BmNetworkTCPClient(QHostAddress(ui->lineEditIPServer->text() ), ui->spinBoxPortListen->value(), false);
     connect(mSocket, SIGNAL(connectionError()), this, SLOT(showError()) );
+    connect(mSocket, SIGNAL(connectedTo(const QString&)), this, SLOT(connecToBis(const QString&)) );
     mSocket->start();
+
+
+
 }
 void JoinParty::showError()
 {
@@ -40,5 +45,9 @@ void JoinParty::showError()
     QString msg = error->getMessage();
     ui->label_3->setText(error->getMessage());
 
+}
+void JoinParty::connecToBis(const QString&)
+{
+    int i=0;
 }
 
