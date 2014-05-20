@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui widgets network
+QT += multimedia
 
 TARGET = Bomberman
 TEMPLATE = app
@@ -13,10 +14,8 @@ SOURCES += main.cpp\
 	mainwindow.cpp \
 	windowstatistics.cpp \
     paramwindows.cpp \
-    windowserveur.cpp \
     launchsologame.cpp \
     widgetchat.cpp \
-    launchmultigame.cpp \
     eltdecor.cpp \
     eltbomb.cpp \
     eltfixedbrick.cpp \
@@ -35,16 +34,15 @@ SOURCES += main.cpp\
 	bmnetworktcpclient.cpp \
 	bmnetworktcpserver.cpp \
 	bytebuffer.cpp \
-	byteorder.cpp
-
+	byteorder.cpp \
+            joinparty.cpp \
+            createpartymultigamer.cpp
 
 HEADERS += mainwindow.h \
 	windowstatistics.h \
     paramwindows.h \
-    windowserveur.h \
     launchsologame.h \
     widgetchat.h \
-    launchmultigame.h \
     elttempbrick.h \
     eltplayer.h \
     eltfixedbrick.h \
@@ -63,12 +61,14 @@ HEADERS += mainwindow.h \
 	bmnetworktcpclient.h \
 	bmnetworktcpserver.h \
 	bytebuffer.h \
-	byteorder.h
+	byteorder.h\
+            joinparty.h \
+            createpartymultigamer.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \
     paramwindows.ui \
-    windowserveur.ui \
     launchsologame.ui \
     widgetchat.ui \
-    launchmultigame.ui
+	joinparty.ui \
+        createpartymultigamer.ui

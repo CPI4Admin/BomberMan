@@ -1,6 +1,7 @@
 #include "paramwindows.h"
 #include "ui_paramwindows.h"
 
+
 ParamWindows::ParamWindows(QWidget *parent, int modeOuverture) :
     QDialog(parent),
     ui(new Ui::ParamWindows)
@@ -9,6 +10,8 @@ ParamWindows::ParamWindows(QWidget *parent, int modeOuverture) :
     ui->tabWidget->setCurrentIndex(modeOuverture);
     FillCbResolution();
     connect(ui->cboResolution,SIGNAL(currentIndexChanged(int)),this,SLOT(ChangeResolution()));
+    connect(ui->btValider,SIGNAL(clicked()),this,SLOT(AddMusic()));
+
 }
 
 ParamWindows::~ParamWindows()
@@ -28,4 +31,9 @@ void ParamWindows::FillCbResolution()
 void ParamWindows::ChangeResolution()
 {
     //TODO: Changer la résolution en fonction de la selection
+}
+void ParamWindows::AddMusic()
+{
+QSound player("music/m1.wav");
+player.play();
 }
