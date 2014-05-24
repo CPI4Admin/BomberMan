@@ -36,7 +36,9 @@ SOURCES += main.cpp\
 	bytebuffer.cpp \
 	byteorder.cpp \
             joinparty.cpp \
-            createpartymultigamer.cpp
+            createpartymultigamer.cpp \
+    frmconnexion.cpp \
+    currentProfile.cpp
 
 HEADERS += mainwindow.h \
 	windowstatistics.h \
@@ -63,7 +65,9 @@ HEADERS += mainwindow.h \
 	bytebuffer.h \
 	byteorder.h\
             joinparty.h \
-            createpartymultigamer.h
+            createpartymultigamer.h \
+    frmconnexion.h \
+    currentProfile.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \
@@ -71,4 +75,5 @@ FORMS    += mainwindow.ui \
     launchsologame.ui \
     widgetchat.ui \
 	joinparty.ui \
-        createpartymultigamer.ui
+        createpartymultigamer.ui \
+    frmconnexion.ui

@@ -9,7 +9,7 @@
 #include "launchsologame.h"
 #include "widgetchat.h"
 #include "joinparty.h"
-
+#include "frmconnexion.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,6 +22,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Show welcome message
     ui->statusBar->showMessage("Bienvenue sur BOMBERMAN.", 15000);
+    frmConnexion* frmConnect = new frmConnexion();
+    frmConnect->show();
+
 
     // Linking buttons to action triggered
     connect(ui->actionDemarrerPartieSolo,SIGNAL(triggered()),this,SLOT(BeginPartySolo()));
