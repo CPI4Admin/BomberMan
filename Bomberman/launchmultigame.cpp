@@ -1,7 +1,5 @@
 #include "launchmultigame.h"
 #include "ui_launchmultigame.h"
-#include "networkserver.h"
-#include "networkclient.h"
 #include "widgetchat.h"
 #include <QMessageBox>
 
@@ -23,15 +21,15 @@ void LaunchMultiGame::LancerPartie()
 {
     if(ui->rB_Heberger->isChecked())
     {
-        NetworkServer* server = new NetworkServer();
+        /*NetworkServer* server = new NetworkServer();
         server->StartServer();
-
+*/
         QMessageBox msg;
         msg.setText("Vous venez de démarrer une parite multi-joueur en tant que joueur hôte.");
         msg.exec();
 
         // TODO: Se connecter en tant que client au server.
-        NetworkClient *monClient = new NetworkClient();
+        //NetworkClient *monClient = new NetworkClient();
 
 
         //TODO: Modifier affichage
