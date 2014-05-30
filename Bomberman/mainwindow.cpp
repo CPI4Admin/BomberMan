@@ -9,6 +9,8 @@
 #include "launchsologame.h"
 #include "widgetchat.h"
 #include "joinparty.h"
+#include "help.h"
+#include <QAction>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -169,31 +171,14 @@ void MainWindow::AudioSetting()
 
 void MainWindow::Help()
 {
-    QString texte;
-    QFile fichier("../Bomberman/Help.txt"); // Modification du chemin d'accès en chemin relatif
-    
-    if(fichier.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        texte = fichier.readAll();
-        QMessageBox msgHelp;
-        msgHelp.setGeometry(10,100,400,200);
-        msgHelp.information(this, "Fichier d'aide : ", texte);
 
-        fichier.close();
-        ui->statusBar->showMessage("Vous venez de fermer le fichier d'Aide.", 15000);
-    }
-    else
-    {
-        // Tu veux du commentaire ! je vais t'en mettre ...
-        // Modifié par Yann le 26 février 2014 car cela ne fonctionnait pas !!!!
-        // Banzai !!!!!!!!!
-        QMessageBox msg; //déclaration d'une variable msg de type QMessageBox
-        msg.setText("Impossible d'ouvrir le fichier !"); // Modification de la variable avec du texte !
-        msg.exec(); // Affichage de la QMessageBox pour le mec qui a besoin d'aide ;-)
-        // Fin du commentaire par Yann
-    }
+    help* helpWindow = new help(this);
 
-}
+    // helpWindow->show(); // Roman : 30/05/2014 : Mis en commentaire car s'ouvre déjà deans la classe help
+
+    ui->statusBar->showMessage("Vous venez de fermer le fichier d'Aide.", 15000);
+
+ }
 
 void MainWindow::Credits()
 {
@@ -213,4 +198,16 @@ void MainWindow::Statistics()
     Stats->exec();
     ui->statusBar->showMessage("Vous avez consulté les statistics.", 15000);
 }
+void MainWindow::helpAction()//Test lancement fenetre Aide en appuant la touche "F1"
+{/*
+
+
+QAction* test;
+test = new QAction;
+test->setShortCut("F1");
+connect(test,triggered(),this,Help());
+
+*/
+}
+
 

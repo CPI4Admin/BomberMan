@@ -42,6 +42,7 @@ private slots:
     void Help();
     void Credits();
     void Statistics();
+	void helpAction();
 
 private:
     Ui::MainWindow *ui;
