@@ -16,6 +16,7 @@
 #include <Qdialog>
 #include <QFileDialog>
 #include <QAbstractSocket>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;

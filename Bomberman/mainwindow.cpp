@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAide,SIGNAL(triggered()),this,SLOT(Help()));
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
-
+    connect(this, SIGNAL(pressed(Qt::Key_F1)), this, SLOT(Help()));//Test Roman touche F1
 }
 
 MainWindow::~MainWindow()
@@ -203,10 +203,13 @@ void MainWindow::Statistics()
     Stats->exec();
     ui->statusBar->showMessage("Vous avez consulté les statistics.", 15000);
 }
-void MainWindow::helpAction()//Test lancement fenetre Aide en appuant la touche "F1"
-{/*
 
-
+void MainWindow::helpAction( )//Test lancement fenetre Aide en appuant la touche "F1"
+{
+    QKeyEvent* event;
+    if(event->key() == Qt::Key_F1)
+    Help();
+        /*
 QAction* test;
 test = new QAction;
 test->setShortCut("F1");
