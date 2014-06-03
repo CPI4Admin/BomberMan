@@ -36,4 +36,6 @@ void ParamWindows::AddMusic()
 {
 QSound player("music/m1.wav");
 player.play();
+
+//connect(ui->btValider, SIGNAL(clicked()), &player, SLOT(play()));
 }
