@@ -16,6 +16,7 @@ SOURCES += main.cpp\
     paramwindows.cpp \
     launchsologame.cpp \
     widgetchat.cpp \
+    help.cpp \
     eltdecor.cpp \
     eltbomb.cpp \
     eltfixedbrick.cpp \
@@ -45,6 +46,7 @@ HEADERS += mainwindow.h \
     paramwindows.h \
     launchsologame.h \
     widgetchat.h \
+    help.h \
     elttempbrick.h \
     eltplayer.h \
     eltfixedbrick.h \
