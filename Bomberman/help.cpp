@@ -4,7 +4,7 @@
 
 help::help(QWidget *parent)
 {
-    QFile fichier("../Bomberman/help.html");
+    QFile fichier("://help.html");
     QMessageBox msgHelp;
 
     fichier.open(QIODevice::ReadOnly | QIODevice::Text);//Ouverture de fichier
