@@ -79,3 +79,6 @@ FORMS    += mainwindow.ui \
 	joinparty.ui \
         createpartymultigamer.ui \
     frmconnexion.ui
+
+RESOURCES += \
+    Bomberman.qrc

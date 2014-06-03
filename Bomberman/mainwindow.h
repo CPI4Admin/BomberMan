@@ -16,7 +16,8 @@
 #include <Qdialog>
 #include <QFileDialog>
 #include <QAbstractSocket>
-#include <QKeyEvent>
+#include <QEvent>
+
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    virtual bool event(QEvent *event);
 
 private slots:
     void BeginPartySolo();
@@ -43,10 +45,12 @@ private slots:
     void Help();
     void Credits();
     void Statistics();
-	void helpAction();
+
+
 
 private:
     Ui::MainWindow *ui;
+
 
                                                                              //QTcpServer *server;
 };

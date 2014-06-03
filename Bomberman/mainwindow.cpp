@@ -13,7 +13,6 @@
 #include "help.h"
 #include <QAction>
 
->>>>>>> Gestion de la fenêtre d'aide par le biais d'une nouvelle classe
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAide,SIGNAL(triggered()),this,SLOT(Help()));
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
-    connect(this, SIGNAL(pressed(Qt::Key_F1)), this, SLOT(Help()));//Test Roman touche F1
+
 }
 
 MainWindow::~MainWindow()
@@ -204,18 +203,13 @@ void MainWindow::Statistics()
     ui->statusBar->showMessage("Vous avez consulté les statistics.", 15000);
 }
 
-void MainWindow::helpAction( )//Test lancement fenetre Aide en appuant la touche "F1"
+bool MainWindow::event(QEvent *event)//Test lancement fenetre Aide en appuant la touche "F1"
 {
-    QKeyEvent* event;
-    if(event->key() == Qt::Key_F1)
-    Help();
-        /*
-QAction* test;
-test = new QAction;
-test->setShortCut("F1");
-connect(test,triggered(),this,Help());
+    QKeyEvent* kevent = dynamic_cast<QKeyEvent*>(event);
+    if(kevent && kevent ->key() == Qt::Key_F1)
+        Help();
+    return true;
 
-*/
 }
 
 
