@@ -30,7 +30,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    virtual bool event(QEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 
 private slots:
     void BeginPartySolo();
