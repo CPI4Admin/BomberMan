@@ -12,6 +12,7 @@
 #include "frmconnexion.h"
 #include "help.h"
 #include <QAction>
+#include <currentProfile.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -24,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     showMaximized();
 
     //Show welcome message
-    ui->statusBar->showMessage("Bienvenue sur BOMBERMAN.", 15000);
+    ui->statusBar->showMessage("Non connecté - Bienvenue sur BOMBERMAN.", 15000);
     frmConnexion* frmConnect = new frmConnexion();
     frmConnect->show();
 
@@ -42,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAide,SIGNAL(triggered()),this,SLOT(Help()));
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
-
+    connect(frmConnect,SIGNAL(connexionOk()),this,SLOT(UtilisateurConnecte()));
 }
 
 MainWindow::~MainWindow()
@@ -59,6 +60,12 @@ void MainWindow::BeginPartySolo()
     LaunchSoloGame* formsologame = new LaunchSoloGame(this);
     formsologame->show();
     ui->statusBar->showMessage("Lancez une nouvelle partie solo.", 15000);
+}
+
+void MainWindow::UtilisateurConnecte()
+{
+    currentProfile* user  = currentProfile::getInstance();
+    ui->statusBar->showMessage("Connecté - Bienvenue sur BOMBERMAN " + user->getPseudo() + ".", 15000);
 }
 
 void MainWindow::BeginPartyMulti()
