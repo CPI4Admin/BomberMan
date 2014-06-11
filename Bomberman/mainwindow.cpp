@@ -180,7 +180,7 @@ void MainWindow::Help()
 
     // helpWindow->show(); // Roman : 30/05/2014 : Mis en commentaire car s'ouvre déjà deans la classe help
 
-    ui->statusBar->showMessage("Vous venez de fermer le fichier d'Aide.", 15000);
+    ui->statusBar->showMessage("Vous venez de fermer la fenêtre d'Aide.", 15000);
 
  }
 
@@ -203,13 +203,22 @@ void MainWindow::Statistics()
     ui->statusBar->showMessage("Vous avez consulté les statistics.", 15000);
 }
 
-bool MainWindow::event(QEvent *event)//Test lancement fenetre Aide en appuant la touche "F1"
+void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    QKeyEvent* kevent = dynamic_cast<QKeyEvent*>(event);
+    if (event && event->key() == Qt::Key_F1) {
+        Help();// Ouvre la fenêtre d'aide
+ }
+}
+
+
+//Cela fonction mais lance la fenetre 3 fois
+/*bool MainWindow::event(QEvent *event)//Test lancement fenetre Aide en appuant la touche "F1"
+{
+    QKeyEvent* kevent = static_cast<QKeyEvent*>(event);
     if(kevent && kevent ->key() == Qt::Key_F1)
         Help();
     return true;
 
 }
-
+*/
 
