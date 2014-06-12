@@ -26,6 +26,34 @@ currentProfile* currentProfile::getInstance()
         return NULL;
     else
         return instance;
+}
 
+QString currentProfile::getPseudo()
+{
+    return pseudo;
+}
 
+QString currentProfile::getMotDePasse()
+{
+    return motDePasse;
+}
+
+int currentProfile::getNbConnexion()
+{
+    return nbConnexion;
+}
+
+int currentProfile::getNbVictoire()
+{
+    return nbVictoire;
+}
+
+int currentProfile::getNbDefaite()
+{
+    return nbDefaite;
+}
+
+int currentProfile::getNbPartie()
+{
+    return nbPartie;
 }

@@ -15,6 +15,9 @@ public:
     explicit frmConnexion(QWidget *parent = 0);
     ~frmConnexion();
 
+signals:
+    void connexionOk();
+
 private slots:
     void ConnexionProfil();
     void CreationProfil();

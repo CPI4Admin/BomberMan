@@ -32,6 +32,9 @@ public:
     ~MainWindow();
     void keyPressEvent(QKeyEvent *event);
 
+public slots:
+    void UtilisateurConnecte();
+
 private slots:
     void BeginPartySolo();
     void BeginPartyMulti();
@@ -45,8 +48,6 @@ private slots:
     void Help();
     void Credits();
     void Statistics();
-
-
 
 private:
     Ui::MainWindow *ui;
