@@ -12,7 +12,7 @@
 #include "frmconnexion.h"
 #include "help.h"
 #include <QAction>
-#include <currentProfile.h>
+#include "currentProfile.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
