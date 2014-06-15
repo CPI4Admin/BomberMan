@@ -18,6 +18,7 @@ public:
 
 private:
     Ui::ParamWindows *ui;
+    void FillCbPlaylist();
     void FillCbResolution();
 
 

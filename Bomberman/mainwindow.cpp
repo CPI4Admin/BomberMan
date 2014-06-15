@@ -24,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // Maximize the window
     showMaximized();
 
+    // Play welcome sound
+    QSound::play(":/sons/welcome");
+
     //Show welcome message
     ui->statusBar->showMessage("Non connecté - Bienvenue sur BOMBERMAN.", 15000);
     frmConnexion* frmConnect = new frmConnexion();
@@ -152,6 +155,8 @@ void MainWindow::SavePartySolo()
 
 void MainWindow::Quit()
 {
+    QSound::play(":/sons/goodbye");
+
     if (QMessageBox::Yes == QMessageBox(QMessageBox::Warning, "Confirmation de sortie.", "Êtes-vous sûr de vouloir quitter BomberMan ?", QMessageBox::Yes|QMessageBox::No).exec())
     {
         exit(true);
