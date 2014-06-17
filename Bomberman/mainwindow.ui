@@ -80,7 +80,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+              <normaloff>../../../Pictures/icon_coeur.png</normaloff>../../../Pictures/icon_coeur.png</iconset>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButtonLifeFour">
@@ -100,7 +100,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+              <normaloff>../../../Pictures/icon_coeur.png</normaloff>../../../Pictures/icon_coeur.png</iconset>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButtonLifeThree">
@@ -120,7 +120,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+              <normaloff>../../../Pictures/icon_coeur.png</normaloff>../../../Pictures/icon_coeur.png</iconset>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButtonLifeTwo">
@@ -140,7 +140,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+              <normaloff>../../../Pictures/icon_coeur.png</normaloff>../../../Pictures/icon_coeur.png</iconset>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButtonLifeFive">
@@ -160,7 +160,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../Pictures/icon_coeur.png</normaloff>../../../../Pictures/icon_coeur.png</iconset>
+              <normaloff>../../../Pictures/icon_coeur.png</normaloff>../../../Pictures/icon_coeur.png</iconset>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButtonScore">
@@ -177,7 +177,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../Pictures/score.png</normaloff>../../../../Pictures/score.png</iconset>
+              <normaloff>../../../Pictures/score.png</normaloff>../../../Pictures/score.png</iconset>
             </property>
            </widget>
            <widget class="QLineEdit" name="lineEditScore">
@@ -238,7 +238,7 @@
            <property name="title">
             <string/>
            </property>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>0</x>
@@ -271,7 +271,7 @@
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>71</x>
@@ -369,10 +369,18 @@
      <addaction name="actionLeaderboard"/>
      <addaction name="actionAffichageStatistics"/>
     </widget>
+    <widget class="QMenu" name="menuTest_Unitaire">
+     <property name="title">
+      <string>Test Unitaire</string>
+     </property>
+     <addaction name="actionTestYann"/>
+     <addaction name="actionTestDamien"/>
+    </widget>
     <addaction name="menuNouvelle_Partie"/>
     <addaction name="menuOptions"/>
     <addaction name="menuProfil"/>
     <addaction name="actionQuitter"/>
+    <addaction name="menuTest_Unitaire"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
@@ -381,7 +389,19 @@
     <addaction name="actionAide"/>
     <addaction name="actionA_propos"/>
    </widget>
+   <widget class="QMenu" name="menuTestUnitaire">
+    <property name="title">
+     <string>Test Unitaire</string>
+    </property>
+    <addaction name="actionTest_Damien"/>
+    <addaction name="actionTest_Gr_goire"/>
+    <addaction name="actionTest_Thibaud"/>
+    <addaction name="actionTest_Petra"/>
+    <addaction name="actionTest_Roman"/>
+    <addaction name="actionTest_Yoann"/>
+   </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menuTestUnitaire"/>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -456,6 +476,51 @@
   <action name="actionAffichageStatistics">
    <property name="text">
     <string>Satistics</string>
+   </property>
+  </action>
+  <action name="actionTestYann">
+   <property name="text">
+    <string>TestYann</string>
+   </property>
+  </action>
+  <action name="actionTestDamien">
+   <property name="text">
+    <string>TestDamien</string>
+   </property>
+  </action>
+  <action name="actionTest_Damien">
+   <property name="text">
+    <string>Test Damien</string>
+   </property>
+  </action>
+  <action name="actionTest_Gr_goire">
+   <property name="text">
+    <string>Test Grégoire</string>
+   </property>
+  </action>
+  <action name="actionTest_Thibaud">
+   <property name="text">
+    <string>Test Thibaud</string>
+   </property>
+  </action>
+  <action name="actionTest_Petra">
+   <property name="text">
+    <string>Test Petra</string>
+   </property>
+  </action>
+  <action name="actionTest_Roman">
+   <property name="text">
+    <string>Test Roman</string>
+   </property>
+  </action>
+  <action name="actionTest_Yoann">
+   <property name="text">
+    <string>Test Yoann</string>
+   </property>
+  </action>
+  <action name="actionTest_Yann">
+   <property name="text">
+    <string>Test Yann</string>
    </property>
   </action>
  </widget>
