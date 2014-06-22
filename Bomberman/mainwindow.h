@@ -48,6 +48,7 @@ private slots:
     void Help();
     void Credits();
     void Statistics();
+    void ModifierMdP();
 
 private:
     Ui::MainWindow *ui;

@@ -15,6 +15,14 @@ public:
     int getNbDefaite();
     int getNbConnexion();
 
+    void setMotDePasse(QString value);
+    void setNbVictoire(int value);
+    void setNbPartie(int value);
+    void setNbDefaite(int value);
+    void setNbConnexion(int value);
+
+    void MAJProfil();
+
 private:
     currentProfile(QString _pseudo,QString _motdepasse,int _nbConnexion,int _nbPartie,int _nbVictoire,int _nbDefaite);
     static currentProfile* instance;

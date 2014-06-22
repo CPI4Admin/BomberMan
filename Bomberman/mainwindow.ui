@@ -238,7 +238,7 @@
            <property name="title">
             <string/>
            </property>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>0</x>
@@ -271,7 +271,7 @@
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>71</x>
@@ -368,6 +368,7 @@
      <addaction name="actionInformations"/>
      <addaction name="actionLeaderboard"/>
      <addaction name="actionAffichageStatistics"/>
+     <addaction name="actionModifier_mot_de_passe"/>
     </widget>
     <addaction name="menuNouvelle_Partie"/>
     <addaction name="menuOptions"/>
@@ -456,6 +457,11 @@
   <action name="actionAffichageStatistics">
    <property name="text">
     <string>Satistics</string>
+   </property>
+  </action>
+  <action name="actionModifier_mot_de_passe">
+   <property name="text">
+    <string>Modifier mot de passe</string>
    </property>
   </action>
  </widget>

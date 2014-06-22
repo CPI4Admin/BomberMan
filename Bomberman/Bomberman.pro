@@ -39,7 +39,8 @@ SOURCES += main.cpp\
             joinparty.cpp \
             createpartymultigamer.cpp \
     frmconnexion.cpp \
-    currentProfile.cpp
+    currentProfile.cpp \
+    frmModifMdp.cpp
 
 HEADERS += mainwindow.h \
 	windowstatistics.h \
@@ -69,7 +70,8 @@ HEADERS += mainwindow.h \
             joinparty.h \
             createpartymultigamer.h \
     frmconnexion.h \
-    currentProfile.h
+    currentProfile.h \
+    frmModifMdp.h
 
 FORMS    += mainwindow.ui \
     windowstatistics.ui \
@@ -78,7 +80,8 @@ FORMS    += mainwindow.ui \
     widgetchat.ui \
 	joinparty.ui \
         createpartymultigamer.ui \
-    frmconnexion.ui
+    frmconnexion.ui \
+    frmModifMdp.ui
 
 RESOURCES += \
     Bomberman.qrc

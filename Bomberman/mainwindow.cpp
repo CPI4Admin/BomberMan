@@ -13,7 +13,7 @@
 #include "help.h"
 #include <QAction>
 #include <currentProfile.h>
-
+#include "frmModifMdp.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,6 +43,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAide,SIGNAL(triggered()),this,SLOT(Help()));
     connect(ui->actionA_propos,SIGNAL(triggered()),this,SLOT(Credits()));
     connect(ui->actionAffichageStatistics,SIGNAL(triggered()),this,SLOT(Statistics()));
+
+    connect(ui->actionModifier_mot_de_passe,SIGNAL(triggered()),this,SLOT(ModifierMdP()));
     connect(frmConnect,SIGNAL(connexionOk()),this,SLOT(UtilisateurConnecte()));
 }
 
@@ -217,6 +219,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
  }
 }
 
+void MainWindow::ModifierMdP()
+{
+    frmModifMdp* frmModif;
+    frmModif = new frmModifMdp(this);
+    frmModif->show();
+}
 
 //Cela fonction mais lance la fenetre 3 fois
 /*bool MainWindow::event(QEvent *event)//Test lancement fenetre Aide en appuant la touche "F1"

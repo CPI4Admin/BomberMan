@@ -5,12 +5,15 @@
 #include <QFile>
 #include <QTextStream>
 #include <QIODevice>
+#include <QCryptographicHash>
 
 frmConnexion::frmConnexion(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::frmConnexion)
 {
     ui->setupUi(this);
+
+    ui->txtPassword->setEchoMode(QLineEdit::Password);
 
     connect(ui->btConnexion,SIGNAL(clicked()),this,SLOT(ConnexionProfil()));
     connect(ui->btCreation,SIGNAL(clicked()),this, SLOT(CreationProfil()));
@@ -38,8 +41,14 @@ void frmConnexion::ConnexionProfil()
         /*TODO: Lire le fichier profiles.csv*/
         QFile profiles(QApplication::applicationDirPath() + "/profiles.csv");
         QString pseudo = ui->txtPseudo->text();
-        QString motdepasse = ui->txtPassword->text();
         int nbConnexion, nbPartie, nbVictoire, nbDefaite;
+
+        QString chaine=ui->txtPassword->text(); // On crée la chaine à hacher
+
+        QByteArray ba =  QCryptographicHash::hash( QByteArray (
+        QCryptographicHash::hash (QString("SEL_AVANT").toUtf8(), QCryptographicHash::Md5) + QCryptographicHash::hash (chaine.toUtf8(), QCryptographicHash::Md5) +  QCryptographicHash::hash( QString("SEL_APRES").toUtf8(), QCryptographicHash::Md5)), QCryptographicHash::Sha1); // on la hache
+
+        QString motdepasse=ba.toHex(); // on convertit le hash en QString
 
         bool trouve = false;
 
@@ -64,10 +73,9 @@ void frmConnexion::ConnexionProfil()
 
                 if(trouve)
                 {
-                    currentProfile::getInstance(pseudo,motdepasse,nbConnexion, nbPartie, nbVictoire, nbDefaite);
+                    currentProfile *user = currentProfile::getInstance(pseudo,motdepasse,nbConnexion + 1, nbPartie, nbVictoire, nbDefaite);
+                    user->MAJProfil();
 
-                    msg.setText("Connecté au profil: " + currentProfile::getInstance()->getPseudo());
-                    msg.exec();
                     emit connexionOk();
                     this->close();
                 }
@@ -94,10 +102,12 @@ void frmConnexion::ConnexionProfil()
 
                 profiles.close();
 
-                currentProfile::getInstance(pseudo,motdepasse,0,0,0,0);
+                currentProfile *user = currentProfile::getInstance(pseudo,motdepasse,1,0,0,0);
 
-                msg.setText("Le fichier profiles.csv et le profil utilisateur " + currentProfile::getInstance()->getPseudo() +" ont été crée.\n Connecté au profil: " + currentProfile::getInstance()->getPseudo());
+                msg.setText("Le fichier profiles.csv et le profil utilisateur " + user->getPseudo() +" ont été crée.\n Connecté au profil: " + user->getPseudo());
                 msg.exec();
+                user->MAJProfil();
+
                 emit connexionOk();
                 this->close();
             }
@@ -123,24 +133,53 @@ void frmConnexion::CreationProfil()
         /*TODO: Ecrire le fichier profiles.csv*/
 
         QString pseudo = ui->txtPseudo->text();
-        QString motdepasse = ui->txtPassword->text();
+
+        QString chaine=ui->txtPassword->text(); // On crée la chaine à hacher
+        QByteArray ba =  QCryptographicHash::hash( QByteArray (QCryptographicHash::hash (QString("SEL_AVANT").toUtf8(), QCryptographicHash::Md5) + QCryptographicHash::hash (chaine.toUtf8(), QCryptographicHash::Md5) +  QCryptographicHash::hash( QString("SEL_APRES").toUtf8(), QCryptographicHash::Md5)), QCryptographicHash::Sha1); // on la hache
+        QString motdepasse=ba.toHex();
 
         QFile profiles(QApplication::applicationDirPath() +"/profiles.csv");
-        if (profiles.open(QIODevice::Append | QIODevice::Text))
+
+        bool trouve = false;
+
+        if(profiles.exists())
         {
-            QTextStream flux(&profiles);
-            QString contenu = flux.readAll();
-            QString texte = contenu + "\n" + pseudo+ ";" + motdepasse+ ";0;0;0;0";
-            flux << texte;
+            if(profiles.open(QIODevice::ReadOnly | QIODevice::Text))
+            {
+                QTextStream flux(&profiles);
+                while(!flux.atEnd() && !trouve)
+                {
+                    QString line = flux.readLine();
+                    QStringList detailsLine = line.split(";");
+                    if(detailsLine[0] == pseudo)
+                    {
+                        trouve = true;
+                    }
+                }
+                profiles.close();
+            }
+            if(!trouve)
+            {
+                if (profiles.open(QIODevice::Append | QIODevice::Text))
+                {
+                    QTextStream flux(&profiles);
+                    QString contenu = flux.readAll();
+                    QString texte = contenu + "\n" + pseudo+ ";" + motdepasse+ ";1;0;0;0";
+                    flux << texte;
 
-            profiles.close();
+                    profiles.close();
 
-            currentProfile::getInstance(pseudo,motdepasse,0,0,0,0);
+                    currentProfile::getInstance(pseudo,motdepasse,1,0,0,0);
 
-            msg.setText("Connecté au profil: " + currentProfile::getInstance()->getPseudo());
-            msg.exec();
-            emit connexionOk();
-            this->close();
+                    emit connexionOk();
+                    this->close();
+                }
+            }
+            else
+            {
+                    msg.setText("Ce pseudo existe déjà. Veuiller en choisir un autre.");
+                    msg.exec();
+            }
         }
         else
         {
