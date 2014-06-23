@@ -9,7 +9,9 @@ ParamWindows::ParamWindows(QWidget *parent, int modeOuverture) :
     ui->setupUi(this);
     ui->tabWidget->setCurrentIndex(modeOuverture);
     FillCbResolution();
+    FillCbPlaylist();
     connect(ui->cboResolution,SIGNAL(currentIndexChanged(int)),this,SLOT(ChangeResolution()));
+    connect(ui->cboPlaylist,SIGNAL(currentIndexChanged(int)),this,SLOT(AddMusic()));
     connect(ui->btValider,SIGNAL(clicked()),this,SLOT(AddMusic()));
 
 }
@@ -28,14 +30,18 @@ void ParamWindows::FillCbResolution()
     ui->cboResolution->addItem("1920x1080");
 }
 
+void ParamWindows::FillCbPlaylist()
+{
+    ui->cboPlaylist->addItem("Morceau 1");
+    ui->cboPlaylist->addItem("Morceau 2");
+    ui->cboPlaylist->addItem("Morceau 3");
+}
+
 void ParamWindows::ChangeResolution()
 {
     //TODO: Changer la résolution en fonction de la selection
 }
 void ParamWindows::AddMusic()
 {
-QSound player("music/m1.wav");
-player.play();
 
-//connect(ui->btValider, SIGNAL(clicked()), &player, SLOT(play()));
 }

@@ -2,4 +2,8 @@
     <qresource prefix="/">
         <file>help.html</file>
     </qresource>
+    <qresource prefix="/sons">
+        <file alias="welcome">music/7774.wav</file>
+        <file alias="goodbye">music/7777.wav</file>
+    </qresource>
 </RCC>

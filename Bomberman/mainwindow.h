@@ -17,6 +17,7 @@
 #include <QFileDialog>
 #include <QAbstractSocket>
 #include <QEvent>
+#include <QSound>
 
 
 namespace Ui {
